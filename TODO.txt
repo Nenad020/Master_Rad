@@ -1,0 +1,2 @@
+Napraviti sql skriptu da ubaci inicijalne podatke u Scada bazu
+Napraviti da prilikom pokretanja Scade iscita vrednosti iz baze i upise u simulator
