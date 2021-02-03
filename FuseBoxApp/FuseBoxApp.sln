@@ -11,6 +11,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ScadaDb", "SCADA\ScadaDb\Sc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScadaDbAccess", "SCADA\ScadaDbAccess\ScadaDbAccess.csproj", "{C0606F53-AE4A-4492-9CF4-4352958963DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyModbus", "SCADA\Library\EasyModbus.csproj", "{E9A211DF-C3BA-48B2-8E3A-6590D6DB5D33}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,14 @@ Global
 		{C0606F53-AE4A-4492-9CF4-4352958963DC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C0606F53-AE4A-4492-9CF4-4352958963DC}.Release|x64.ActiveCfg = Release|x64
 		{C0606F53-AE4A-4492-9CF4-4352958963DC}.Release|x64.Build.0 = Release|x64
+		{E9A211DF-C3BA-48B2-8E3A-6590D6DB5D33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9A211DF-C3BA-48B2-8E3A-6590D6DB5D33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9A211DF-C3BA-48B2-8E3A-6590D6DB5D33}.Debug|x64.ActiveCfg = Debug|x64
+		{E9A211DF-C3BA-48B2-8E3A-6590D6DB5D33}.Debug|x64.Build.0 = Debug|x64
+		{E9A211DF-C3BA-48B2-8E3A-6590D6DB5D33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9A211DF-C3BA-48B2-8E3A-6590D6DB5D33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9A211DF-C3BA-48B2-8E3A-6590D6DB5D33}.Release|x64.ActiveCfg = Release|x64
+		{E9A211DF-C3BA-48B2-8E3A-6590D6DB5D33}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +64,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2FB22086-75AF-4DEA-ACE4-CD07102E90D2} = {173323DB-B951-4BB4-A416-B3A51A57331C}
 		{C0606F53-AE4A-4492-9CF4-4352958963DC} = {173323DB-B951-4BB4-A416-B3A51A57331C}
+		{E9A211DF-C3BA-48B2-8E3A-6590D6DB5D33} = {173323DB-B951-4BB4-A416-B3A51A57331C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BABCADC5-7509-48CE-B703-21AA52ECC214}
