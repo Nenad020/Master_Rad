@@ -79,7 +79,6 @@
 		{
 			lock (this)
 			{
-				int i = 0;
 				bool objetExists = false;
 				foreach (Client clientLoop in this.tcpClientLastRequestList)
 				{
@@ -121,7 +120,7 @@
 
 					read = networkStream.EndRead(asyncResult);
 				}
-				catch (Exception ex)
+				catch (Exception)
 				{
 					return;
 				}

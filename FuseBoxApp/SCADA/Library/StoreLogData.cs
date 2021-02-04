@@ -74,6 +74,7 @@ namespace EasyModbus
 			}
 			catch (Exception e)
 			{
+				throw e;
 			}
 		}
 
