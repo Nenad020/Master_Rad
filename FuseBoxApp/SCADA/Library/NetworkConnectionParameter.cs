@@ -1,9 +1,8 @@
 ﻿namespace EasyModbus
 {
-	using System.Net;
 	using System.Net.Sockets;
 
-	struct NetworkConnectionParameter
+	internal struct NetworkConnectionParameter
 	{
 		public NetworkStream stream; // For TCP-Connection only
 

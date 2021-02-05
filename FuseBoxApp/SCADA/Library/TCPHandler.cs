@@ -15,7 +15,7 @@
 
 		public event NumberOfClientsChanged numberOfClientsChanged;
 
-		TcpListener server = null;
+		private TcpListener server = null;
 
 		private List<Client> tcpClientLastRequestList = new List<Client>();
 
@@ -89,7 +89,7 @@
 				try
 				{
 					this.tcpClientLastRequestList.RemoveAll(
-						delegate(Client c) { return ((DateTime.Now.Ticks - c.Ticks) > 40000000); });
+						delegate (Client c) { return ((DateTime.Now.Ticks - c.Ticks) > 40000000); });
 				}
 				catch (Exception)
 				{

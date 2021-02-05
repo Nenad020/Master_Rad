@@ -5,7 +5,7 @@
 	using System.Net;
 	using System.Net.Sockets;
 
-    /// <summary>
+	/// <summary>
 	/// Implements a ModbusClient.
 	/// </summary>
 	public partial class ModbusClient
@@ -79,7 +79,7 @@
 
 		public event ConnectedChangedHandler ConnectedChanged;
 
-		NetworkStream stream;
+		private NetworkStream stream;
 
 		/// <summary>
 		/// Constructor which determines the Master ip-address and the Master Port.
@@ -693,9 +693,9 @@
 					break;
 
 				if (DetectValidModbusFrame(
-					    readBuffer,
-					    (actualPositionToRead < readBuffer.Length) ? actualPositionToRead : readBuffer.Length)
-				    | bytesToRead <= actualPositionToRead)
+						readBuffer,
+						(actualPositionToRead < readBuffer.Length) ? actualPositionToRead : readBuffer.Length)
+					| bytesToRead <= actualPositionToRead)
 					break;
 			}
 			while ((DateTime.Now.Ticks - dateTimeLastRead.Ticks) < ticksWait);
@@ -753,7 +753,7 @@
 			if (debug)
 				StoreLogData.Instance.Store(
 					"FC2 (Read Discrete Inputs from Master device), StartingAddress: " + startingAddress
-					                                                                   + ", Quantity: " + quantity,
+																					   + ", Quantity: " + quantity,
 					DateTime.Now);
 			transactionIdentifierInternal++;
 			if (serialport != null)
@@ -783,12 +783,12 @@
 			this.startingAddress = BitConverter.GetBytes(startingAddress);
 			this.quantity = BitConverter.GetBytes(quantity);
 			Byte[] data = new byte[]
-				              {
-					              this.transactionIdentifier[1], this.transactionIdentifier[0],
-					              this.protocolIdentifier[1], this.protocolIdentifier[0], this.length[1],
-					              this.length[0], this.unitIdentifier, this.functionCode, this.startingAddress[1],
-					              this.startingAddress[0], this.quantity[1], this.quantity[0], this.crc[0], this.crc[1]
-				              };
+							  {
+								  this.transactionIdentifier[1], this.transactionIdentifier[0],
+								  this.protocolIdentifier[1], this.protocolIdentifier[0], this.length[1],
+								  this.length[0], this.unitIdentifier, this.functionCode, this.startingAddress[1],
+								  this.startingAddress[0], this.quantity[1], this.quantity[0], this.crc[0], this.crc[1]
+							  };
 			crc = BitConverter.GetBytes(calculateCRC(data, 6, 6));
 			data[12] = crc[0];
 			data[13] = crc[1];
@@ -825,11 +825,11 @@
 				byte receivedUnitIdentifier = 0xFF;
 
 				while (receivedUnitIdentifier != this.unitIdentifier
-				       & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
-				           > TimeSpan.TicksPerMillisecond * this.connectTimeout))
+					   & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
+						   > TimeSpan.TicksPerMillisecond * this.connectTimeout))
 				{
 					while (dataReceived == false & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
-					                                 > TimeSpan.TicksPerMillisecond * this.connectTimeout))
+													 > TimeSpan.TicksPerMillisecond * this.connectTimeout))
 						System.Threading.Thread.Sleep(1);
 					data = new byte[2100];
 					Array.Copy(readBuffer, 0, data, 6, readBuffer.Length);
@@ -1000,12 +1000,12 @@
 			this.startingAddress = BitConverter.GetBytes(startingAddress);
 			this.quantity = BitConverter.GetBytes(quantity);
 			Byte[] data = new byte[]
-				              {
-					              this.transactionIdentifier[1], this.transactionIdentifier[0],
-					              this.protocolIdentifier[1], this.protocolIdentifier[0], this.length[1],
-					              this.length[0], this.unitIdentifier, this.functionCode, this.startingAddress[1],
-					              this.startingAddress[0], this.quantity[1], this.quantity[0], this.crc[0], this.crc[1]
-				              };
+							  {
+								  this.transactionIdentifier[1], this.transactionIdentifier[0],
+								  this.protocolIdentifier[1], this.protocolIdentifier[0], this.length[1],
+								  this.length[0], this.unitIdentifier, this.functionCode, this.startingAddress[1],
+								  this.startingAddress[0], this.quantity[1], this.quantity[0], this.crc[0], this.crc[1]
+							  };
 
 			crc = BitConverter.GetBytes(calculateCRC(data, 6, 6));
 			data[12] = crc[0];
@@ -1041,11 +1041,11 @@
 				DateTime dateTimeSend = DateTime.Now;
 				byte receivedUnitIdentifier = 0xFF;
 				while (receivedUnitIdentifier != this.unitIdentifier
-				       & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
-				           > TimeSpan.TicksPerMillisecond * this.connectTimeout))
+					   & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
+						   > TimeSpan.TicksPerMillisecond * this.connectTimeout))
 				{
 					while (dataReceived == false & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
-					                                 > TimeSpan.TicksPerMillisecond * this.connectTimeout))
+													 > TimeSpan.TicksPerMillisecond * this.connectTimeout))
 						System.Threading.Thread.Sleep(1);
 					data = new byte[2100];
 
@@ -1187,7 +1187,7 @@
 			if (debug)
 				StoreLogData.Instance.Store(
 					"FC3 (Read Holding Registers from Master device), StartingAddress: " + startingAddress
-					                                                                     + ", Quantity: " + quantity,
+																						 + ", Quantity: " + quantity,
 					DateTime.Now);
 			transactionIdentifierInternal++;
 			if (serialport != null)
@@ -1217,12 +1217,12 @@
 			this.startingAddress = BitConverter.GetBytes(startingAddress);
 			this.quantity = BitConverter.GetBytes(quantity);
 			Byte[] data = new byte[]
-				              {
-					              this.transactionIdentifier[1], this.transactionIdentifier[0],
-					              this.protocolIdentifier[1], this.protocolIdentifier[0], this.length[1],
-					              this.length[0], this.unitIdentifier, this.functionCode, this.startingAddress[1],
-					              this.startingAddress[0], this.quantity[1], this.quantity[0], this.crc[0], this.crc[1]
-				              };
+							  {
+								  this.transactionIdentifier[1], this.transactionIdentifier[0],
+								  this.protocolIdentifier[1], this.protocolIdentifier[0], this.length[1],
+								  this.length[0], this.unitIdentifier, this.functionCode, this.startingAddress[1],
+								  this.startingAddress[0], this.quantity[1], this.quantity[0], this.crc[0], this.crc[1]
+							  };
 			crc = BitConverter.GetBytes(calculateCRC(data, 6, 6));
 			data[12] = crc[0];
 			data[13] = crc[1];
@@ -1255,11 +1255,11 @@
 				DateTime dateTimeSend = DateTime.Now;
 				byte receivedUnitIdentifier = 0xFF;
 				while (receivedUnitIdentifier != this.unitIdentifier
-				       & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
-				           > TimeSpan.TicksPerMillisecond * this.connectTimeout))
+					   & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
+						   > TimeSpan.TicksPerMillisecond * this.connectTimeout))
 				{
 					while (dataReceived == false & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
-					                                 > TimeSpan.TicksPerMillisecond * this.connectTimeout))
+													 > TimeSpan.TicksPerMillisecond * this.connectTimeout))
 						System.Threading.Thread.Sleep(1);
 					data = new byte[2100];
 					Array.Copy(readBuffer, 0, data, 6, readBuffer.Length);
@@ -1407,7 +1407,7 @@
 			if (debug)
 				StoreLogData.Instance.Store(
 					"FC4 (Read Input Registers from Master device), StartingAddress: " + startingAddress
-					                                                                   + ", Quantity: " + quantity,
+																					   + ", Quantity: " + quantity,
 					DateTime.Now);
 			transactionIdentifierInternal++;
 			if (serialport != null)
@@ -1437,12 +1437,12 @@
 			this.startingAddress = BitConverter.GetBytes(startingAddress);
 			this.quantity = BitConverter.GetBytes(quantity);
 			Byte[] data = new byte[]
-				              {
-					              this.transactionIdentifier[1], this.transactionIdentifier[0],
-					              this.protocolIdentifier[1], this.protocolIdentifier[0], this.length[1],
-					              this.length[0], this.unitIdentifier, this.functionCode, this.startingAddress[1],
-					              this.startingAddress[0], this.quantity[1], this.quantity[0], this.crc[0], this.crc[1]
-				              };
+							  {
+								  this.transactionIdentifier[1], this.transactionIdentifier[0],
+								  this.protocolIdentifier[1], this.protocolIdentifier[0], this.length[1],
+								  this.length[0], this.unitIdentifier, this.functionCode, this.startingAddress[1],
+								  this.startingAddress[0], this.quantity[1], this.quantity[0], this.crc[0], this.crc[1]
+							  };
 			crc = BitConverter.GetBytes(calculateCRC(data, 6, 6));
 			data[12] = crc[0];
 			data[13] = crc[1];
@@ -1476,11 +1476,11 @@
 				byte receivedUnitIdentifier = 0xFF;
 
 				while (receivedUnitIdentifier != this.unitIdentifier
-				       & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
-				           > TimeSpan.TicksPerMillisecond * this.connectTimeout))
+					   & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
+						   > TimeSpan.TicksPerMillisecond * this.connectTimeout))
 				{
 					while (dataReceived == false & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
-					                                 > TimeSpan.TicksPerMillisecond * this.connectTimeout))
+													 > TimeSpan.TicksPerMillisecond * this.connectTimeout))
 						System.Threading.Thread.Sleep(1);
 					data = new byte[2100];
 					Array.Copy(readBuffer, 0, data, 6, readBuffer.Length);
@@ -1658,12 +1658,12 @@
 			}
 
 			Byte[] data = new byte[]
-				              {
-					              this.transactionIdentifier[1], this.transactionIdentifier[0],
-					              this.protocolIdentifier[1], this.protocolIdentifier[0], this.length[1],
-					              this.length[0], this.unitIdentifier, this.functionCode, this.startingAddress[1],
-					              this.startingAddress[0], coilValue[1], coilValue[0], this.crc[0], this.crc[1]
-				              };
+							  {
+								  this.transactionIdentifier[1], this.transactionIdentifier[0],
+								  this.protocolIdentifier[1], this.protocolIdentifier[0], this.length[1],
+								  this.length[0], this.unitIdentifier, this.functionCode, this.startingAddress[1],
+								  this.startingAddress[0], coilValue[1], coilValue[0], this.crc[0], this.crc[1]
+							  };
 			crc = BitConverter.GetBytes(calculateCRC(data, 6, 6));
 			data[12] = crc[0];
 			data[13] = crc[1];
@@ -1695,11 +1695,11 @@
 				DateTime dateTimeSend = DateTime.Now;
 				byte receivedUnitIdentifier = 0xFF;
 				while (receivedUnitIdentifier != this.unitIdentifier
-				       & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
-				           > TimeSpan.TicksPerMillisecond * this.connectTimeout))
+					   & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
+						   > TimeSpan.TicksPerMillisecond * this.connectTimeout))
 				{
 					while (dataReceived == false & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
-					                                 > TimeSpan.TicksPerMillisecond * this.connectTimeout))
+													 > TimeSpan.TicksPerMillisecond * this.connectTimeout))
 						System.Threading.Thread.Sleep(1);
 					data = new byte[2100];
 					Array.Copy(readBuffer, 0, data, 6, readBuffer.Length);
@@ -1850,12 +1850,12 @@
 			registerValue = BitConverter.GetBytes((int)value);
 
 			Byte[] data = new byte[]
-				              {
-					              this.transactionIdentifier[1], this.transactionIdentifier[0],
-					              this.protocolIdentifier[1], this.protocolIdentifier[0], this.length[1],
-					              this.length[0], this.unitIdentifier, this.functionCode, this.startingAddress[1],
-					              this.startingAddress[0], registerValue[1], registerValue[0], this.crc[0], this.crc[1]
-				              };
+							  {
+								  this.transactionIdentifier[1], this.transactionIdentifier[0],
+								  this.protocolIdentifier[1], this.protocolIdentifier[0], this.length[1],
+								  this.length[0], this.unitIdentifier, this.functionCode, this.startingAddress[1],
+								  this.startingAddress[0], registerValue[1], registerValue[0], this.crc[0], this.crc[1]
+							  };
 			crc = BitConverter.GetBytes(calculateCRC(data, 6, 6));
 			data[12] = crc[0];
 			data[13] = crc[1];
@@ -1887,11 +1887,11 @@
 				DateTime dateTimeSend = DateTime.Now;
 				byte receivedUnitIdentifier = 0xFF;
 				while (receivedUnitIdentifier != this.unitIdentifier
-				       & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
-				           > TimeSpan.TicksPerMillisecond * this.connectTimeout))
+					   & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
+						   > TimeSpan.TicksPerMillisecond * this.connectTimeout))
 				{
 					while (dataReceived == false & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
-					                                 > TimeSpan.TicksPerMillisecond * this.connectTimeout))
+													 > TimeSpan.TicksPerMillisecond * this.connectTimeout))
 						System.Threading.Thread.Sleep(1);
 					data = new byte[2100];
 					Array.Copy(readBuffer, 0, data, 6, readBuffer.Length);
@@ -2109,11 +2109,11 @@
 				DateTime dateTimeSend = DateTime.Now;
 				byte receivedUnitIdentifier = 0xFF;
 				while (receivedUnitIdentifier != this.unitIdentifier
-				       & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
-				           > TimeSpan.TicksPerMillisecond * this.connectTimeout))
+					   & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
+						   > TimeSpan.TicksPerMillisecond * this.connectTimeout))
 				{
 					while (dataReceived == false & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
-					                                 > TimeSpan.TicksPerMillisecond * this.connectTimeout))
+													 > TimeSpan.TicksPerMillisecond * this.connectTimeout))
 						System.Threading.Thread.Sleep(1);
 					data = new byte[2100];
 					Array.Copy(readBuffer, 0, data, 6, readBuffer.Length);
@@ -2246,7 +2246,7 @@
 			if (debug)
 				StoreLogData.Instance.Store(
 					"FC16 (Write multiple Registers to Server device), StartingAddress: " + startingAddress
-					                                                                      + ", Values: " + debugString,
+																						  + ", Values: " + debugString,
 					DateTime.Now);
 			transactionIdentifierInternal++;
 			byte byteCount = (byte)(values.Length * 2);
@@ -2323,11 +2323,11 @@
 				DateTime dateTimeSend = DateTime.Now;
 				byte receivedUnitIdentifier = 0xFF;
 				while (receivedUnitIdentifier != this.unitIdentifier
-				       & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
-				           > TimeSpan.TicksPerMillisecond * this.connectTimeout))
+					   & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
+						   > TimeSpan.TicksPerMillisecond * this.connectTimeout))
 				{
 					while (dataReceived == false & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
-					                                 > TimeSpan.TicksPerMillisecond * this.connectTimeout))
+													 > TimeSpan.TicksPerMillisecond * this.connectTimeout))
 						System.Threading.Thread.Sleep(1);
 					data = new byte[2100];
 					Array.Copy(readBuffer, 0, data, 6, readBuffer.Length);
@@ -2562,11 +2562,11 @@
 				DateTime dateTimeSend = DateTime.Now;
 				byte receivedUnitIdentifier = 0xFF;
 				while (receivedUnitIdentifier != this.unitIdentifier
-				       & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
-				           > TimeSpan.TicksPerMillisecond * this.connectTimeout))
+					   & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
+						   > TimeSpan.TicksPerMillisecond * this.connectTimeout))
 				{
 					while (dataReceived == false & !((DateTime.Now.Ticks - dateTimeSend.Ticks)
-					                                 > TimeSpan.TicksPerMillisecond * this.connectTimeout))
+													 > TimeSpan.TicksPerMillisecond * this.connectTimeout))
 						System.Threading.Thread.Sleep(1);
 					data = new byte[2100];
 					Array.Copy(readBuffer, 0, data, 6, readBuffer.Length);
