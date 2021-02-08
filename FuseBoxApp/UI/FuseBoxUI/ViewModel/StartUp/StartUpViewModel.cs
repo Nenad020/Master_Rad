@@ -25,6 +25,9 @@ namespace FuseBoxUI.ViewModel.StartUp
 
         public async Task DoSomethingAsync()
         {
+            //ViewModelApplication.SideMenuVisible ^= true;
+            //return;
+
             ViewModelApplication.GoToPage(ApplicationPage.Report);
 
             await Task.Delay(1000);
