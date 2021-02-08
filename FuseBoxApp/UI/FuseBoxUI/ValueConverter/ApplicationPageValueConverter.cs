@@ -19,6 +19,9 @@ namespace FuseBoxUI.ValueConverter
 				case ApplicationPage.StartUp:
 					return new StartUpPage();
 
+				case ApplicationPage.Report:
+					return new ReportPage();
+
 				default:
 					Debugger.Break();
 					return null;

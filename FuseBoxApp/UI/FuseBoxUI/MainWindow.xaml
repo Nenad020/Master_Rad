@@ -6,6 +6,7 @@
 		xmlns:local="clr-namespace:FuseBoxUI"
 		xmlns:converter="clr-namespace:FuseBoxUI.ValueConverter"
 		xmlns:controls="clr-namespace:FuseBoxUI.View.Controls"
+		xmlns:viewModel="clr-namespace:FuseBoxUI.ViewModel"
 		mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -126,10 +127,12 @@
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
 
-			<Frame Grid.Column="1"
-				   x:Name="MainFrame" 
-				   Content="{Binding CurrentPage, Converter={converter:ApplicationPageValueConverter}}" 
-				   Background="Transparent" />
+			<Frame Grid.Column="1" 
+                   x:Name="MainFrame" 
+                   Content="{Binding ApplicationViewModel.CurrentPage, 
+                                     Source={x:Static viewModel:ViewModelLocator.Instance},  
+                                     Converter={converter:ApplicationPageValueConverter}}"
+                   Background="Transparent" />
 			
 			<!-- Side Menu -->
 			<controls:SideMenuControl>
