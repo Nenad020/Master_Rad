@@ -64,14 +64,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
+    <Compile Include="AttachedProperties\ButtonAttachedProperty.cs" />
     <Compile Include="DataModels\ApplicationPage.cs" />
-    <Compile Include="Pages\StartUpPage.xaml.cs">
+    <Compile Include="Expressions\ExpressionHelpers.cs" />
+    <Compile Include="ValueConverter\StringRGBToBrushConverter.cs" />
+    <Compile Include="ViewModel\Alarm\AlarmItemViewModel.cs" />
+    <Compile Include="ViewModel\Alarm\AlarmListItemViewModel.cs" />
+    <Compile Include="ViewModel\Alarm\Design\AlarmListItemDesignModel.cs" />
+    <Compile Include="ViewModel\Alarm\Design\AlarmItemDesignModel.cs" />
+    <Compile Include="View\Controls\AlarmItemControl.xaml.cs">
+      <DependentUpon>AlarmItemControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\AlarmListItemControl.xaml.cs">
+      <DependentUpon>AlarmListItemControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\StartUpPage.xaml.cs">
       <DependentUpon>StartUpPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ValueConverter\ApplicationPageValueConverter.cs" />
     <Compile Include="ValueConverter\BaseValueConverter.cs" />
+    <Compile Include="ValueConverter\BooleanToVisibilityConverter.cs" />
     <Compile Include="ViewModel\Base\BaseViewModel.cs" />
     <Compile Include="ViewModel\Base\RelayCommand.cs" />
+    <Compile Include="ViewModel\Base\RelayParameterizedCommand.cs" />
     <Compile Include="ViewModel\WindowViewModel.cs" />
     <Compile Include="Window\WindowResizer.cs" />
     <Page Include="MainWindow.xaml">
@@ -86,7 +102,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\StartUpPage.xaml">
+    <Page Include="View\Controls\AlarmItemControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\AlarmListItemControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\StartUpPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,6 +171,7 @@
     <Resource Include="Fonts\Lato-SemiboldItalic.ttf" />
     <Resource Include="Fonts\Lato-Thin.ttf" />
     <Resource Include="Fonts\Lato-ThinItalic.ttf" />
+    <Resource Include="Fonts\fontawesome-webfont.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -161,6 +186,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Background\background-abstract.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Alarm\alert.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\packages\Fody.6.3.0\build\Fody.targets" Condition="Exists('..\..\packages\Fody.6.3.0\build\Fody.targets')" />

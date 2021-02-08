@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace FuseBoxUI.Pages
+namespace FuseBoxUI.View.Pages
 {
 	/// <summary>
 	/// Interaction logic for StartUpPage.xaml

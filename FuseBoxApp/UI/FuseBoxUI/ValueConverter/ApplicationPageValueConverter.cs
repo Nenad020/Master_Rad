@@ -1,5 +1,5 @@
 ﻿using FuseBoxUI.DataModels;
-using FuseBoxUI.Pages;
+using FuseBoxUI.View.Pages;
 using System;
 using System.Diagnostics;
 using System.Globalization;

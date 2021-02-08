@@ -13,7 +13,7 @@
         Icon="Images/Logo/FuseBox.png"
         MinWidth="{Binding WindowMinimumWidth}"
         MinHeight="{Binding WindowMinimumHeight}"
-        Title="Fuse Box Application" Height="600" Width="900">
+        Title="Fuse Box Application" Height="900" Width="1200">
 
 	<Window.Resources>
 		<Style TargetType="{x:Type local:MainWindow}">
@@ -54,6 +54,7 @@
 
 										<!-- Window Content -->
 										<RowDefinition Height="*" />
+
 									</Grid.RowDefinitions>
 
 									<!-- Title Bar -->
@@ -66,6 +67,7 @@
 											<ColumnDefinition Width="*" />
 											<!-- Windows Button -->
 											<ColumnDefinition Width="Auto" />
+
 										</Grid.ColumnDefinitions>
 
 										<!-- Icon -->
@@ -79,7 +81,7 @@
 												<TextBlock FontFamily="{StaticResource LatoBold}" FontSize="{StaticResource FontSizeRegular}" Margin="0,0,0,-5" TextAlignment="Center">
                                                     <Run Text="F" Foreground="{StaticResource WordBlueBrush}" /><Run Text="U" Foreground="{StaticResource WordBlueBrush}" /><Run Text="S" Foreground="{StaticResource WordBlueBrush}" /><Run Text="E" Foreground="{StaticResource WordBlueBrush}" />
 												</TextBlock>
-												<TextBlock Text="box app" Foreground="{StaticResource ForegroundDarkBrush}" TextAlignment="Center" />
+												<TextBlock Text="box app" Foreground="{StaticResource ForegroundVeryDarkBrush}" TextAlignment="Center" />
 											</StackPanel>
 										</Viewbox>
 
@@ -89,13 +91,16 @@
 											<Button Command="{Binding MaximizeCommand}" Style="{StaticResource WindowControlButton}" Content="[ ]" />
 											<Button Command="{Binding CloseCommand}" Style="{StaticResource WindowCloseButton}" Content="X" />
 										</StackPanel>
+
 									</Grid>
 
 									<!-- Page Content -->
 									<Border Grid.Row="1" Padding="{Binding InnerContentPadding}">
 										<ContentPresenter Content="{TemplateBinding Content}" />
 									</Border>
+
 								</Grid>
+
 							</Grid>
 						</Border>
 					</ControlTemplate>
@@ -109,10 +114,13 @@
             ResizeBorderThickness="{Binding ResizeBorderThickness}"
             CaptionHeight="{Binding TitleHeight}"
             CornerRadius="0"
-            GlassFrameThickness="0" />
+            GlassFrameThickness="0"
+            />
 	</WindowChrome.WindowChrome>
 
-	<Grid Background="{StaticResource ForegroundLightBrush}">
-		<Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={converter:ApplicationPageValueConverter}}" />
-	</Grid>
+	<Border Background="{StaticResource WordBlueBrush}">
+		<Grid>
+			<Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={converter:ApplicationPageValueConverter}}" Background="Transparent" />
+		</Grid>
+	</Border>
 </Window>
