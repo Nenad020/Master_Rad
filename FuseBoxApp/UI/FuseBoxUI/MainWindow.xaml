@@ -5,6 +5,7 @@
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:local="clr-namespace:FuseBoxUI"
 		xmlns:converter="clr-namespace:FuseBoxUI.ValueConverter"
+		xmlns:controls="clr-namespace:FuseBoxUI.View.Controls"
 		mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -120,7 +121,20 @@
 
 	<Border Background="{StaticResource WordBlueBrush}">
 		<Grid>
-			<Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={converter:ApplicationPageValueConverter}}" Background="Transparent" />
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="300" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<Frame Grid.Column="1"
+				   x:Name="MainFrame" 
+				   Content="{Binding CurrentPage, Converter={converter:ApplicationPageValueConverter}}" 
+				   Background="Transparent" />
+			
+			<!-- Side Menu -->
+			<controls:SideMenuControl>
+				<controls:AlarmListItemControl />
+			</controls:SideMenuControl>
 		</Grid>
 	</Border>
 </Window>
