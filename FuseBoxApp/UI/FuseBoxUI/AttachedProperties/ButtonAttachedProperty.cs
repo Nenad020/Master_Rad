@@ -1,12 +1,9 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-
-namespace FuseBoxUI.AttachedProperties
+﻿namespace FuseBoxUI.AttachedProperties
 {
-    /// <summary>
-    /// The IsBusy attached property for a anything that wants to flag if the control is busy
-    /// </summary>
-    public class IsBusyProperty : BaseAttachedProperty<IsBusyProperty, bool>
+	/// <summary>
+	/// The IsBusy attached property for a anything that wants to flag if the control is busy
+	/// </summary>
+	public class IsBusyProperty : BaseAttachedProperty<IsBusyProperty, bool>
     {
     }
 }

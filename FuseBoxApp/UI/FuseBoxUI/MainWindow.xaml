@@ -128,13 +128,13 @@
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
 
-			<Frame Grid.Column="1" 
-                   x:Name="MainFrame" 
-                   Content="{Binding ApplicationViewModel.CurrentPage, 
+			<controls:PageHost Grid.Column="1" 
+                   d:DataContext=""
+                   DataContext="{Binding ApplicationViewModel.CurrentPage, 
                                      Source={x:Static viewModel:ViewModelLocator.Instance},  
                                      Converter={converter:ApplicationPageValueConverter}}"
-                   Background="Transparent" />
-			
+                   CurrentPage="{Binding}" />
+
 			<!-- Side Menu -->
 			<controls:SideMenuControl Width="300" 
 									  attachedProperties:AnimateSlideInFromLeftProperty.Value="{Binding ApplicationViewModel.SideMenuVisible, 
