@@ -1,5 +1,6 @@
 ﻿using FuseBoxUI.DataModels;
 using FuseBoxUI.ViewModel.Base;
+
 namespace FuseBoxUI.ViewModel
 {
     /// <summary>
@@ -9,7 +10,7 @@ namespace FuseBoxUI.ViewModel
     {
         public ApplicationPage CurrentPage { get; private set; } = ApplicationPage.StartUp;
 
-        public bool SideMenuVisible { get; set; } = false;
+        public bool SideMenuVisible { get; set; } = true;
 
         /// <summary>
         /// The view model to use for the current page when the CurrentPage changes

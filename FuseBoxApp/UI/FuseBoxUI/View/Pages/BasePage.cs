@@ -26,7 +26,7 @@ namespace FuseBoxUI.View.Pages
         /// <summary>
         /// The time any slide animation takes to complete
         /// </summary>
-        public float SlideSeconds { get; set; } = 0.4f;
+        public float SlideSeconds { get; set; } = 0.6f;
 
         /// <summary>
         /// A flag to indicate if this page should animate out on load.
