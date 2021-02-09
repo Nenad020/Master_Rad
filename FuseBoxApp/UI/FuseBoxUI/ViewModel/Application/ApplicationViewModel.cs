@@ -1,7 +1,7 @@
 ﻿using FuseBoxUI.DataModels;
 using FuseBoxUI.ViewModel.Base;
 
-namespace FuseBoxUI.ViewModel
+namespace FuseBoxUI.ViewModel.Application
 {
     /// <summary>
     /// The application state as a view model

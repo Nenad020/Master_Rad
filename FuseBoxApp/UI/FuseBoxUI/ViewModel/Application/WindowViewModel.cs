@@ -4,7 +4,7 @@ using FuseBoxUI.Window;
 using System.Windows;
 using System.Windows.Input;
 
-namespace FuseBoxUI.ViewModel
+namespace FuseBoxUI.ViewModel.Application
 {
 	/// <summary>
 	/// The View Model for the custom flat window

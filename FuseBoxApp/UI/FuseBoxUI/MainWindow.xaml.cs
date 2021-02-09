@@ -1,4 +1,4 @@
-﻿using FuseBoxUI.ViewModel;
+﻿using FuseBoxUI.ViewModel.Application;
 
 namespace FuseBoxUI
 {

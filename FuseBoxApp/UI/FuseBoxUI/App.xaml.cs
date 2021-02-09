@@ -15,7 +15,8 @@ namespace FuseBoxUI
 			base.OnStartup(e);
 
 			Framework.Construct<DefaultFrameworkConstruction>()
-				.AddPagesViewModel()
+				.AddApplicationViewModel()
+				.AddApplicationClientServices()
 				.Build();
 
 			// Show the main window

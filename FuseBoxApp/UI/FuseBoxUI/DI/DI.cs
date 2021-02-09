@@ -1,5 +1,6 @@
 ﻿using Dna;
-using FuseBoxUI.ViewModel;
+using FuseBoxUI.DI.Interfaces;
+using FuseBoxUI.ViewModel.Application;
 
 namespace FuseBoxUI.DI
 {
@@ -12,5 +13,10 @@ namespace FuseBoxUI.DI
         /// A shortcut to access the <see cref="ApplicationViewModel"/>
         /// </summary>
         public static ApplicationViewModel ViewModelApplication => Framework.Service<ApplicationViewModel>();
+
+        /// <summary>
+        /// A shortcut to access the <see cref="IUIManager"/>
+        /// </summary>
+        public static IUIManager UI => Framework.Service<IUIManager>();
     }
 }

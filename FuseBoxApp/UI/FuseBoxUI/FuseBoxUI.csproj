@@ -141,16 +141,20 @@
     <Compile Include="DataModels\ApplicationPage.cs" />
     <Compile Include="DI\DI.cs" />
     <Compile Include="DI\FrameworkConstructionExtensions.cs" />
+    <Compile Include="DI\Interfaces\IUIManager.cs" />
+    <Compile Include="DI\UIManager.cs" />
     <Compile Include="Expressions\ExpressionHelpers.cs" />
     <Compile Include="ValueConverter\StringRGBToBrushConverter.cs" />
     <Compile Include="ViewModel\Alarm\AlarmItemViewModel.cs" />
     <Compile Include="ViewModel\Alarm\AlarmListItemViewModel.cs" />
     <Compile Include="ViewModel\Alarm\Design\AlarmListItemDesignModel.cs" />
     <Compile Include="ViewModel\Alarm\Design\AlarmItemDesignModel.cs" />
-    <Compile Include="ViewModel\ApplicationViewModel.cs" />
+    <Compile Include="ViewModel\Application\ApplicationViewModel.cs" />
+    <Compile Include="ViewModel\Dialog\BaseDialogViewModel.cs" />
+    <Compile Include="ViewModel\Dialog\MessageBoxDialogViewModel.cs" />
     <Compile Include="ViewModel\Report\ReportViewModel.cs" />
     <Compile Include="ViewModel\StartUp\StartUpViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="ViewModel\Application\ViewModelLocator.cs" />
     <Compile Include="View\Controls\AlarmItemControl.xaml.cs">
       <DependentUpon>AlarmItemControl.xaml</DependentUpon>
     </Compile>
@@ -176,7 +180,7 @@
     <Compile Include="ViewModel\Base\BaseViewModel.cs" />
     <Compile Include="ViewModel\Base\RelayCommand.cs" />
     <Compile Include="ViewModel\Base\RelayParameterizedCommand.cs" />
-    <Compile Include="ViewModel\WindowViewModel.cs" />
+    <Compile Include="ViewModel\Application\WindowViewModel.cs" />
     <Compile Include="Window\WindowResizer.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

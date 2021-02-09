@@ -1,6 +1,6 @@
 ﻿using static FuseBoxUI.DI.DI;
 
-namespace FuseBoxUI.ViewModel
+namespace FuseBoxUI.ViewModel.Application
 {
 	/// <summary>
 	/// Locates view models from the IoC for use in binding in Xaml files
