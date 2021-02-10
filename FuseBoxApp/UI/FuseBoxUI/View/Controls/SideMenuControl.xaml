@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FuseBoxUI.View.Controls"
+			 xmlns:appViewModel="clr-namespace:FuseBoxUI.ViewModel.Application"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 	
@@ -30,8 +31,16 @@
 							<Grid Height="50" Background="{StaticResource WordBlueBrush}">
 								<!-- Main buttons -->
 								<StackPanel Orientation="Horizontal">
-									<Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeBoltIcon}" />
-									<Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeClipboardIcon}" />
+									<Button Style="{StaticResource IconButton}" 
+											Content="{StaticResource FontAwesomeBoltIcon}"
+											Command="{Binding ApplicationViewModel.MainPageCommand, 
+											Source={x:Static appViewModel:ViewModelLocator.Instance}}"
+											/>
+									<Button Style="{StaticResource IconButton}" 
+											Content="{StaticResource FontAwesomeClipboardIcon}" 
+											Command="{Binding ApplicationViewModel.ReportPageCommand, 
+											Source={x:Static appViewModel:ViewModelLocator.Instance}}"
+											/>
 								</StackPanel>
 							</Grid>
 						</Border>

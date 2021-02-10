@@ -6,7 +6,7 @@
 		xmlns:local="clr-namespace:FuseBoxUI"
 		xmlns:converter="clr-namespace:FuseBoxUI.ValueConverter"
 		xmlns:controls="clr-namespace:FuseBoxUI.View.Controls"
-		xmlns:appViewModel="clr-namespace:FuseBoxUI.ViewModel.Application"	
+		xmlns:appViewModel="clr-namespace:FuseBoxUI.ViewModel.Application"
 		xmlns:attachedProperties="clr-namespace:FuseBoxUI.AttachedProperties"
 		mc:Ignorable="d"
         WindowStyle="None"
@@ -149,7 +149,7 @@
 			<!-- Side Menu -->
 			<controls:SideMenuControl Width="300" 
 									  attachedProperties:AnimateSlideInFromLeftProperty.Value="{Binding ApplicationViewModel.SideMenuVisible, 
-                                      Source={x:Static appViewModel:ViewModelLocator.Instance}}">
+																								Source={x:Static appViewModel:ViewModelLocator.Instance}}">
 				<controls:AlarmListItemControl />
 			</controls:SideMenuControl>
 		</Grid>

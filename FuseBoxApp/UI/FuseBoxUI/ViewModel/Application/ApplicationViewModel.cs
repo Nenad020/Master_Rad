@@ -1,5 +1,7 @@
 ﻿using FuseBoxUI.DataModels;
 using FuseBoxUI.ViewModel.Base;
+using System.Windows.Input;
+using static FuseBoxUI.DI.DI;
 
 namespace FuseBoxUI.ViewModel.Application
 {
@@ -12,6 +14,10 @@ namespace FuseBoxUI.ViewModel.Application
 
         public bool SideMenuVisible { get; set; } = true;
 
+        public ICommand MainPageCommand { get; set; }
+
+        public ICommand ReportPageCommand { get; set; }
+
         /// <summary>
         /// The view model to use for the current page when the CurrentPage changes
         /// NOTE: This is not a live up-to-date view model of the current page
@@ -19,6 +25,24 @@ namespace FuseBoxUI.ViewModel.Application
         ///       at the time it changes
         /// </summary>
         public BaseViewModel CurrentPageViewModel { get; set; }
+
+        public ApplicationViewModel()
+        {
+            MainPageCommand = new RelayCommand(MainPage);
+            ReportPageCommand = new RelayCommand(ReportPage);
+        }
+
+        public void MainPage()
+		{
+            if (CurrentPage != ApplicationPage.StartUp)
+                ViewModelApplication.GoToPage(ApplicationPage.StartUp);
+        }
+
+        public void ReportPage()
+		{
+            if (CurrentPage != ApplicationPage.Report)
+                ViewModelApplication.GoToPage(ApplicationPage.Report);
+        }
 
         /// <summary>
         /// Navigates to the specified page

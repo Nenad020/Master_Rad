@@ -15,46 +15,16 @@ namespace FuseBoxUI.ViewModel.Alarm.Design
 
         public AlarmListItemDesignModel()
         {
-            Items = new List<AlarmItemViewModel>
-            {
-                new AlarmItemViewModel
-                {
-                    Message = "Breaker with ID: 5 has been turned off!",
+            Items = new List<AlarmItemViewModel>();
+
+			for (int i = 1; i <= 20; i++)
+			{
+                Items.Add(new AlarmItemViewModel
+                { 
+                    Message = $"Breaker with ID: {i} has been turned off!", 
                     Date = DateTime.Now.ToString()
-                },
-                new AlarmItemViewModel
-                {
-                    Message = "Breaker with ID: 5 has been turned off!"
-                },
-                new AlarmItemViewModel
-                {
-                    Message = "Breaker with ID: 5 has been turned off!"
-                },
-                new AlarmItemViewModel
-                {
-                    Message = "Breaker with ID: 5 has been turned off!"
-                },
-                new AlarmItemViewModel
-                {
-                    Message = "Breaker with ID: 5 has been turned off!"
-                },
-                new AlarmItemViewModel
-                {
-                    Message = "Breaker with ID: 5 has been turned off!"
-                },
-                new AlarmItemViewModel
-                {
-                    Message = "Breaker with ID: 5 has been turned off!"
-                },
-                new AlarmItemViewModel
-                {
-                    Message = "Breaker with ID: 5 has been turned off!"
-                },
-                new AlarmItemViewModel
-                {
-                    Message = "Breaker with ID: 5 has been turned off!"
-                },
-            };
+                });
+			}
         }
 
         #endregion

@@ -10,7 +10,7 @@
       Title="StartUpPage">
 
 	<Grid>
-		<Button Content="Return to Report" 
+		<Button Content="This is start up page" 
 				Command="{Binding ButtonCommand}"
 				CommandParameter="{Binding ElementName=Page}" 
 				HorizontalAlignment="Center" />
