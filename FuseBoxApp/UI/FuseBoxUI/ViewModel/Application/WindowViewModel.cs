@@ -120,9 +120,10 @@ namespace FuseBoxUI.ViewModel.Application
 		public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight + ResizeBorder); } }
 
 		/// <summary>
-		/// The current page of the application
+		/// True if we should have a dimmed overlay on the window
+		/// such as when a popup is visible or the window is not focused
 		/// </summary>
-		public ApplicationPage CurrentPage { get; set; } = ApplicationPage.StartUp;
+		public bool DimmableOverlayVisible { get; set; }
 
 		#endregion Public Properties
 

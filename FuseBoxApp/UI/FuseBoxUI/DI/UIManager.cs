@@ -1,7 +1,7 @@
 ﻿using FuseBoxUI.DI.Interfaces;
+using FuseBoxUI.View.Windows;
 using FuseBoxUI.ViewModel.Dialog;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace FuseBoxUI.DI
 {
@@ -17,7 +17,7 @@ namespace FuseBoxUI.DI
         /// <returns></returns>
         public Task ShowMessage(MessageBoxDialogViewModel viewModel)
         {
-            return Task.Run(() => MessageBox.Show($"Title is: {viewModel.Title}"));
+            return new DialogMessageBox().ShowDialog(viewModel);
         }
     }
 }

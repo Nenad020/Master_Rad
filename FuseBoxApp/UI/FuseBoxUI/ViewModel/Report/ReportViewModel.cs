@@ -25,6 +25,9 @@ namespace FuseBoxUI.ViewModel.Report
 
         public async Task DoSomethingAsync()
         {
+            await UI.ShowMessage(new Dialog.MessageBoxDialogViewModel() { Title = "Heeeyyy", Message = "CPooo", OkText = "Ok, brate" });
+            return;
+
             ViewModelApplication.GoToPage(ApplicationPage.StartUp);
 
             await Task.Delay(1000);

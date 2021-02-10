@@ -12,7 +12,7 @@
 
         public AlarmItemDesignModel()
         {
-            Message = "Breaker with ID: 5 has been turned off!";
+            Message = "Breaker with ID: 10 has been turned off!";
         }
 
         #endregion

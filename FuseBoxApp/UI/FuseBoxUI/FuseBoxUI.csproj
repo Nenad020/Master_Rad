@@ -151,6 +151,8 @@
     <Compile Include="ViewModel\Alarm\Design\AlarmItemDesignModel.cs" />
     <Compile Include="ViewModel\Application\ApplicationViewModel.cs" />
     <Compile Include="ViewModel\Dialog\BaseDialogViewModel.cs" />
+    <Compile Include="ViewModel\Dialog\Design\MessageBoxDialogDesignModel.cs" />
+    <Compile Include="ViewModel\Dialog\DialogWindowViewModel.cs" />
     <Compile Include="ViewModel\Dialog\MessageBoxDialogViewModel.cs" />
     <Compile Include="ViewModel\Report\ReportViewModel.cs" />
     <Compile Include="ViewModel\StartUp\StartUpViewModel.cs" />
@@ -161,6 +163,7 @@
     <Compile Include="View\Controls\AlarmListItemControl.xaml.cs">
       <DependentUpon>AlarmListItemControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\BaseDialogUserControl.cs" />
     <Compile Include="View\Controls\PageHost.xaml.cs">
       <DependentUpon>PageHost.xaml</DependentUpon>
     </Compile>
@@ -181,6 +184,12 @@
     <Compile Include="ViewModel\Base\RelayCommand.cs" />
     <Compile Include="ViewModel\Base\RelayParameterizedCommand.cs" />
     <Compile Include="ViewModel\Application\WindowViewModel.cs" />
+    <Compile Include="View\Windows\DialogMessageBox.xaml.cs">
+      <DependentUpon>DialogMessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\DialogWindow.xaml.cs">
+      <DependentUpon>DialogWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window\WindowResizer.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -241,6 +250,14 @@
     <Page Include="Styles\Windows.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\DialogMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\DialogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

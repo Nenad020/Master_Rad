@@ -12,6 +12,8 @@
         WindowStyle="None"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
+		Deactivated="AppWindow_Deactivated"
+        Activated="AppWindow_Activated"
         x:Name="AppWindow"
         Icon="Images/Logo/FuseBox.png"
         MinWidth="{Binding WindowMinimumWidth}"
@@ -127,6 +129,15 @@
 				<ColumnDefinition Width="Auto" />
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
+
+			<!-- Dimmed overlay -->
+			<Border Grid.ColumnSpan="2"
+                    Panel.ZIndex="10"
+                    Opacity="0.3">
+				<Border Background="{StaticResource ForegroundVeryDarkBrush}"
+                        attachedProperties:AnimateFadeInProperty.Value="{Binding DimmableOverlayVisible}"
+                        />
+			</Border>
 
 			<controls:PageHost Grid.Column="1" 
                    d:DataContext=""
