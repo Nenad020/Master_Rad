@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace FuseBoxUI.ViewModel.Alarm.Design
 {
@@ -18,20 +19,20 @@ namespace FuseBoxUI.ViewModel.Alarm.Design
             {
                 new AlarmItemViewModel
                 {
-                    Message = "Breaker with ID: 5 has been turned off!"
-                },
-                new AlarmItemViewModel
-                {
-                    Message = "Breaker with ID: 5 has been turned off!"
-                },
-                new AlarmItemViewModel
-                {
-                    Message = "Breaker with ID: 5 has been turned off!"
-                },
-                new AlarmItemViewModel
-                {
                     Message = "Breaker with ID: 5 has been turned off!",
-                    IsSelected = true
+                    Date = DateTime.Now.ToString()
+                },
+                new AlarmItemViewModel
+                {
+                    Message = "Breaker with ID: 5 has been turned off!"
+                },
+                new AlarmItemViewModel
+                {
+                    Message = "Breaker with ID: 5 has been turned off!"
+                },
+                new AlarmItemViewModel
+                {
+                    Message = "Breaker with ID: 5 has been turned off!"
                 },
                 new AlarmItemViewModel
                 {

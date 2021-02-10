@@ -9,10 +9,35 @@
 	<StackPanel d:DataContext="{x:Static designModel:MessageBoxDialogDesignModel.Instance}"
                 Background="{StaticResource ForegroundLightBrush}"
                 >
-		<TextBlock Text="{Binding Message}"
-                   Padding="5"
-                   Foreground="{StaticResource ForegroundVeryDarkBrush}"
-                   />
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<Image Source="/Images/Alarm/alert.png"
+				   VerticalAlignment="Center"
+				   HorizontalAlignment="Center"
+				   Height="50"
+				   />
+
+			<TextBlock Text="{Binding Message}"
+					   Padding="5"
+                       Foreground="{StaticResource ForegroundVeryDarkBrush}"
+				       HorizontalAlignment="Left"
+					   VerticalAlignment="Center"
+				       FontSize="{StaticResource FontSizeRegular}"
+					   Grid.Column="1"
+					   />
+		</Grid>
+		
+		
+
+		<TextBlock Grid.Column="1"
+				   Text="{Binding Date}"
+				   FontSize="{StaticResource FontSizeSmall}"
+				   Foreground="{StaticResource WordLightBlueBrush}"
+				   HorizontalAlignment="Center"/>
 
 		<Button Content="{Binding OkText}"
                 FontSize="{StaticResource FontSizeRegular}"

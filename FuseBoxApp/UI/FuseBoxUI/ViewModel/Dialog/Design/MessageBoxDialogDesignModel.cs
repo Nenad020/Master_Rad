@@ -23,6 +23,7 @@
         {
             OkText = "OK";
             Message = "Design time messages are fun :)";
+            Date = "10-Feb-21 8:05PM";
         }
 
         #endregion

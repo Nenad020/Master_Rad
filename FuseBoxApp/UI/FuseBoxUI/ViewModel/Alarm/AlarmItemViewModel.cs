@@ -9,7 +9,7 @@ namespace FuseBoxUI.ViewModel.Alarm
     {
         public string Message { get; set; }
 
-        public bool IsSelected { get; set; }
+        public string Date { get; set; }
 
         public ICommand ShowDetailsCommand { get; set; }
 
@@ -20,11 +20,12 @@ namespace FuseBoxUI.ViewModel.Alarm
 
         public void ShowDetails()
         {
-            UI.ShowMessage(new MessageBoxDialogViewModel() 
-            { 
-                Title = "ALERT!", 
-                Message = Message, 
-                OkText = "OK" 
+            UI.ShowMessage(new MessageBoxDialogViewModel()
+            {
+                Title = "ALERT!",
+                Message = Message,
+                Date = Date,
+                OkText = "OK"
             });
         }
     }

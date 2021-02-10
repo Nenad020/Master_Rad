@@ -58,7 +58,7 @@
 									</Grid.RowDefinitions>
 
 									<!-- Title Bar -->
-									<Grid Grid.Column="0" Panel.ZIndex="1">
+									<Grid Grid.Column="0" Panel.ZIndex="1" Background="Red">
 
 										<Grid.ColumnDefinitions>
 											<!-- Icon -->
@@ -71,9 +71,7 @@
 										</Grid.ColumnDefinitions>
 
 										<!-- Icon -->
-										<Button Style="{StaticResource SystemIconButton}" Command="{Binding MenuCommand}">
-											<Image Source="../../Images/Alarm/alert.png" />
-										</Button>
+										<Label Width="35"/>
 
 										<!-- Title -->
 										<TextBlock Grid.Column="1" 
