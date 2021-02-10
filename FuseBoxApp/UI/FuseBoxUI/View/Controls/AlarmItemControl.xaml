@@ -18,6 +18,10 @@
 
 						<!-- Content -->
 						<Border x:Name="background" Background="{StaticResource ForegroundLightBrush}">
+							<Border.InputBindings>
+								<MouseBinding Command="{Binding ShowDetailsCommand}" MouseAction="LeftClick" CommandParameter="{Binding}"/>
+							</Border.InputBindings>
+
 							<Grid x:Name="container" Background="Transparent">
 								<Grid.ColumnDefinitions>
 									<!-- Profile picture -->
