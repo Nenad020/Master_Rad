@@ -87,7 +87,7 @@ namespace FuseBoxUI.View.Pages
                 case PageAnimation.SlideAndFadeInFromRight:
 
                     // Start the animation
-                    await this.SlideAndFadeInFromRightAsync(SlideSeconds);
+                    await this.SlideAndFadeInAsync(AnimationSlideInDirection.Right, false, SlideSeconds, size: (int)Application.Current.MainWindow.Width);
 
                     break;
             }
@@ -108,7 +108,7 @@ namespace FuseBoxUI.View.Pages
                 case PageAnimation.SlideAndFadeOutToLeft:
 
                     // Start the animation
-                    await this.SlideAndFadeOutToLeftAsync(SlideSeconds);
+                    await this.SlideAndFadeOutAsync(AnimationSlideInDirection.Left, SlideSeconds);
 
                     break;
             }
