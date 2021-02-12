@@ -1,5 +1,6 @@
 ﻿using FuseBoxUI.ViewModel.Application;
 using System;
+using System.Windows;
 
 namespace FuseBoxUI
 {
@@ -10,6 +11,7 @@ namespace FuseBoxUI
 	{
 		public MainWindow()
 		{
+			WindowState = WindowState.Maximized;
 			InitializeComponent();
 
 			this.DataContext = new WindowViewModel(this);

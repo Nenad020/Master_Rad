@@ -1,5 +1,4 @@
-﻿using FuseBoxUI.DataModels;
-using FuseBoxUI.ViewModel.Base;
+﻿using FuseBoxUI.ViewModel.Base;
 using FuseBoxUI.Window;
 using System.Windows;
 using System.Windows.Input;

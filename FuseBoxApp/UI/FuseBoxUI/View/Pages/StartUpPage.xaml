@@ -5,14 +5,76 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:FuseBoxUI.View.Pages"
       xmlns:viewModel="clr-namespace:FuseBoxUI.ViewModel.StartUp"
+      xmlns:controls="clr-namespace:FuseBoxUI.View.Controls"
       mc:Ignorable="d"
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1010" d:DesignWidth="1680"
       Title="StartUpPage">
 
-	<Grid>
-		<Button Content="This is start up page" 
-				Command="{Binding ButtonCommand}"
-				CommandParameter="{Binding ElementName=Page}" 
-				HorizontalAlignment="Center" />
-	</Grid>
+	<Canvas>
+		<Border Canvas.Left="25" Canvas.Top="25" Background="{StaticResource ForegroundMainBrush}" CornerRadius="8" Height="350" Width="600">
+			<controls:ElectricityBoxControl Height="350" Width="500" />
+		</Border>
+		
+		<Border Canvas.Bottom="75" Canvas.Right="25" Background="{StaticResource ForegroundMainBrush}" CornerRadius="8" Height="350">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+
+				<controls:BreakerControl Height="300" Width="120" />
+				<controls:BreakerControl Height="300" Width="120" Grid.Column="1"/>
+				<controls:BreakerControl Height="300" Width="120" Grid.Column="2"/>
+				<controls:BreakerControl Height="300" Width="120" Grid.Column="3"/>
+				<controls:BreakerControl Height="300" Width="120" Grid.Column="4"/>
+			</Grid>
+		</Border>
+
+		<Border Canvas.Top="25" Canvas.Right="25" Background="{StaticResource ForegroundMainBrush}" CornerRadius="8" Height="350">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+
+				<controls:BreakerControl Height="300" Width="120" />
+				<controls:BreakerControl Height="300" Width="120" Grid.Column="1"/>
+				<controls:BreakerControl Height="300" Width="120" Grid.Column="2"/>
+				<controls:BreakerControl Height="300" Width="120" Grid.Column="3"/>
+				<controls:BreakerControl Height="300" Width="120" Grid.Column="4"/>
+			</Grid>
+		</Border>
+
+		<Border Canvas.Bottom="75" Canvas.Left="25" Background="{StaticResource ForegroundMainBrush}" CornerRadius="8" Height="350">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+
+				<controls:BreakerControl Height="300" Width="120" />
+				<controls:BreakerControl Height="300" Width="120" Grid.Column="1"/>
+				<controls:BreakerControl Height="300" Width="120" Grid.Column="2"/>
+				<controls:BreakerControl Height="300" Width="120" Grid.Column="3"/>
+				<controls:BreakerControl Height="300" Width="120" Grid.Column="4"/>
+			</Grid>
+		</Border>
+	</Canvas>
 </local:BasePage>
+	
+	<!--
+		<controls:BreakerControl Height="300" Width="120" Canvas.Bottom="75" Canvas.Right="25"/>
+				<controls:BreakerControl Height="300" Width="120" Canvas.Bottom="75" Canvas.Right="170"/>
+				<controls:BreakerControl Height="300" Width="120" Canvas.Bottom="75" Canvas.Right="315"/>
+				<controls:BreakerControl Height="300" Width="120" Canvas.Bottom="75" Canvas.Right="460"/>
+				<controls:BreakerControl Height="300" Width="120" Canvas.Bottom="75" Canvas.Right="605"/>
+		-->

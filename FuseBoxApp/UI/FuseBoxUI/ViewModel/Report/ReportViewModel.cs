@@ -8,20 +8,12 @@ namespace FuseBoxUI.ViewModel.Report
 {
 	public class ReportViewModel : BaseViewModel
     {
-        #region Commands
-
         public ICommand ButtonCommand { get; set; }
-
-        #endregion
-
-        #region Constructor
 
         public ReportViewModel()
         {
             ButtonCommand = new RelayCommand(async () => await DoSomethingAsync());
         }
-
-        #endregion
 
         public async Task DoSomethingAsync()
         {

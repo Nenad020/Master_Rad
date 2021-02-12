@@ -40,4 +40,7 @@
 	<Color x:Key="WordGreen">#00c541</Color>
 	<SolidColorBrush x:Key="WordGreenBrush" Color="{StaticResource WordGreen}" />
 
+	<Color x:Key="ToggleLightGray">#FFD3D3D3</Color>
+	<SolidColorBrush x:Key="ToggleLightGrayBrush" Color="{StaticResource ToggleLightGray}" />
+
 </ResourceDictionary>

@@ -60,11 +60,6 @@
 
 						<!-- Hover effect -->
 						<ControlTemplate.Triggers>
-
-							<DataTrigger Binding="{Binding IsSelected}" Value="True">
-								<Setter Property="Background" TargetName="background" Value="{StaticResource WordVeryLightBlueBrush}"/>
-							</DataTrigger>
-
 							<EventTrigger RoutedEvent="MouseEnter">
 								<BeginStoryboard>
 									<Storyboard>
@@ -79,9 +74,6 @@
 									</Storyboard>
 								</BeginStoryboard>
 							</EventTrigger>
-							<Trigger Property="IsEnabled" Value="False">
-								<Setter Property="Background" TargetName="container" Value="{StaticResource ForegroundDarkBrush}"/>
-							</Trigger>
 						</ControlTemplate.Triggers>
 
 					</ControlTemplate>
