@@ -9,17 +9,6 @@ namespace FuseBoxUI.ViewModel.Elements
 
 		public ElectricityBoxViewModel()
 		{
-			new Thread(() => Randomizing()).Start();
-		}
-
-		public void Randomizing()
-		{
-			while (true)
-			{
-				UsedWatts++;
-
-				Thread.Sleep(1);
-			}
 		}
 	}
 }
