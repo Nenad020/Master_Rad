@@ -33,6 +33,8 @@ namespace Scada
 
 		private readonly IScadaDbAccess<CoilsAddress> coilAddressesAccess;
 
+		private readonly IScadaDbAccess<HoldingRegistersAddress> holdingRegistersAddressAccess;
+
 		private readonly string modbusIpAddress;
 
 		private readonly int modbusPort;
@@ -47,7 +49,8 @@ namespace Scada
 
 		#endregion Fields
 
-		public Poller(ScadaModel scadaModel, int delayInMilliseconds, IScadaDbAccess<CoilsAddress> coilAddressesAccess)
+		public Poller(ScadaModel scadaModel, int delayInMilliseconds, IScadaDbAccess<CoilsAddress> coilAddressesAccess, 
+			IScadaDbAccess<HoldingRegistersAddress> holdingRegistersAddressAccess)
 		{
 			this.startup = true;
 			this.pollingData = new PollingData();
@@ -56,6 +59,7 @@ namespace Scada
 			this.delayInMilliseconds = delayInMilliseconds;
 			this.scadaModel = scadaModel;
 			this.coilAddressesAccess = coilAddressesAccess;
+			this.holdingRegistersAddressAccess = holdingRegistersAddressAccess;
 			this.currentState = new BitArray(ushort.MaxValue);
 			this.receivedState = new BitArray(ushort.MaxValue);
 			this.modbusIpAddress = ConfigurationManager.AppSettings["mdbSimIp"];
@@ -208,10 +212,32 @@ namespace Scada
 						continue;
 					}
 
+					UpdateHoldingRegistersAddress(response);
 					PollReplyReceived(response);
 					Thread.Sleep(delayInMilliseconds);
 				}
 			}
+		}
+
+		private void UpdateHoldingRegistersAddress(bool[] polledValues)
+		{
+			if (polledValues == null || polledValues.Length == 0)
+			{
+				return;
+			}
+
+			var holdingRegisterAddress = ModbusClient.ReadHoldingRegisters(0, 1);
+
+			for (int i = 0; i < polledValues.Length; i++)
+			{
+				if (polledValues[i])
+				{
+					holdingRegisterAddress[0]++;
+				}
+			}
+
+			ModbusClient.WriteSingleRegister(0, holdingRegisterAddress[0]);
+			UpdateScadaDbHoldingRegistersAddressValues(0, holdingRegisterAddress[0]);
 		}
 
 		private void PollReplyReceived(bool[] polledValues)
@@ -228,7 +254,7 @@ namespace Scada
 			scadaCoilAddressChanges.Update(difference.Ids, difference.Values);
 
 			//TODO: OBAVESTITI OE O PROMENAMA
-			UpdateScadaDbValues(difference);
+			UpdateScadaDbCoilsAddressValues(difference);
 
 			Console.WriteLine(scadaCoilAddressChanges.Any() ? $"Polled changes:\n{scadaCoilAddressChanges}" : "No changes...");
 		}
@@ -334,7 +360,7 @@ namespace Scada
 			}
 		}
 
-		private void UpdateScadaDbValues(Change difference)
+		private void UpdateScadaDbCoilsAddressValues(Change difference)
 		{
 			int newChanges = difference.Addresses.Length;
 			List<CoilsAddress> coilsAddresses;
@@ -351,6 +377,14 @@ namespace Scada
 			}
 
 			coilAddressesAccess.UpdateValue(coilsAddresses);
+		}
+
+		private void UpdateScadaDbHoldingRegistersAddressValues(int address, int value)
+		{
+			holdingRegistersAddressAccess.UpdateValue(new List<HoldingRegistersAddress>()
+			{
+				ModelFactory.CreateHoldingRegistersAddress(address + 1, 1, true, value)
+			});
 		}
 
 		#endregion Methods
