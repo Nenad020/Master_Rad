@@ -145,6 +145,7 @@
     <Compile Include="DI\Interfaces\IUIManager.cs" />
     <Compile Include="DI\UIManager.cs" />
     <Compile Include="Expressions\ExpressionHelpers.cs" />
+    <Compile Include="ValueConverter\MarginElementConverter.cs" />
     <Compile Include="ValueConverter\StringRGBToBrushConverter.cs" />
     <Compile Include="ViewModel\Alarm\AlarmItemViewModel.cs" />
     <Compile Include="ViewModel\Alarm\AlarmListItemViewModel.cs" />
@@ -155,6 +156,8 @@
     <Compile Include="ViewModel\Dialog\Design\MessageBoxDialogDesignModel.cs" />
     <Compile Include="ViewModel\Dialog\DialogWindowViewModel.cs" />
     <Compile Include="ViewModel\Dialog\MessageBoxDialogViewModel.cs" />
+    <Compile Include="ViewModel\Elements\BreakerViewModel.cs" />
+    <Compile Include="ViewModel\Elements\ElectricityBoxViewModel.cs" />
     <Compile Include="ViewModel\Report\ReportViewModel.cs" />
     <Compile Include="ViewModel\StartUp\StartUpViewModel.cs" />
     <Compile Include="ViewModel\Application\ViewModelLocator.cs" />

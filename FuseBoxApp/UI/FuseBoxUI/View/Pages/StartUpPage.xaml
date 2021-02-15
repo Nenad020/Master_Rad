@@ -14,7 +14,7 @@
 		<Border Canvas.Left="25" Canvas.Top="25" Background="{StaticResource ForegroundMainBrush}" CornerRadius="8" Height="350" Width="600">
 			<controls:ElectricityBoxControl Height="350" Width="500" />
 		</Border>
-		
+
 		<Border Canvas.Bottom="75" Canvas.Right="25" Background="{StaticResource ForegroundMainBrush}" CornerRadius="8" Height="350">
 			<Grid>
 				<Grid.ColumnDefinitions>
@@ -70,11 +70,3 @@
 		</Border>
 	</Canvas>
 </local:BasePage>
-	
-	<!--
-		<controls:BreakerControl Height="300" Width="120" Canvas.Bottom="75" Canvas.Right="25"/>
-				<controls:BreakerControl Height="300" Width="120" Canvas.Bottom="75" Canvas.Right="170"/>
-				<controls:BreakerControl Height="300" Width="120" Canvas.Bottom="75" Canvas.Right="315"/>
-				<controls:BreakerControl Height="300" Width="120" Canvas.Bottom="75" Canvas.Right="460"/>
-				<controls:BreakerControl Height="300" Width="120" Canvas.Bottom="75" Canvas.Right="605"/>
-		-->

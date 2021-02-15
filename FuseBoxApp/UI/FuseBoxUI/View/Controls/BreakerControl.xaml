@@ -4,9 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FuseBoxUI.View.Controls"
+			 xmlns:valueConverter="clr-namespace:FuseBoxUI.ValueConverter"
              mc:Ignorable="d">
 	<Viewbox>
-		<StackPanel Background="Transparent">
+		<StackPanel Background="Transparent" Width="75">
 			<Grid Height="50">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="10" />
@@ -37,26 +38,39 @@
 				<Grid Grid.Column="2" Background="{StaticResource ForegroundVeryDarkBrush}"/>
 			</Grid>
 
-			<Grid Background="{StaticResource ForegroundVeryDarkBrush}" Height="20"/>
+			<TextBlock Background="{StaticResource ForegroundVeryDarkBrush}" 
+					   Height="20" 
+					   Foreground="{StaticResource ForegroundLightBrush}" 
+					   Text="{Binding BreakerName}"
+					   TextAlignment="Center"
+					   TextTrimming="CharacterEllipsis"
+					   />
 
 			<Grid Height="100" Background="{StaticResource ForegroundVeryDarkBrush}">
-				
+
 				<Rectangle x:Name="Pozadina" 
 						   Grid.Column="1" 
-						   Fill="{StaticResource WordRedBrush}"
+						   Fill="{Binding FillBackground, Converter={valueConverter:StringRGBToBrushConverter}, FallbackValue={StaticResource WordRedBrush}}"
 						   RadiusX="50" 
-						   RadiusY="50" 
-						   MouseLeftButtonDown="Pozadina_MouseLeftButtonDown"/>
-				
+						   RadiusY="50">
+
+					<Rectangle.InputBindings>
+						<MouseBinding Gesture="LeftClick" Command="{Binding ChangeValueCommand}"/>
+					</Rectangle.InputBindings>
+				</Rectangle>
+
 				<Ellipse x:Name="Krug" 
 						 Height="57" 
 						 Width="57" 
 						 HorizontalAlignment="Center" 
 						 VerticalAlignment="Center" 
 						 Fill="{StaticResource ForegroundLightBrush}" 
-						 Margin="0,35,0,0" 
-						 MouseLeftButtonDown="Krug_MouseLeftButtonDown">
-					
+						 Margin="{Binding TogglePositions, Converter={valueConverter:MarginElementConverter}}" >
+
+					<Ellipse.InputBindings>
+						<MouseBinding Gesture="LeftClick" Command="{Binding ChangeValueCommand}"/>
+					</Ellipse.InputBindings>
+
 					<Ellipse.Triggers>
 						<EventTrigger RoutedEvent="MouseEnter">
 							<BeginStoryboard>
