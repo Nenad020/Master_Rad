@@ -52,6 +52,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,8 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Communication\Client\SCADA\ScadaCommandClient.cs" />
+    <Compile Include="Communication\Contract\SCADA\ICommand.cs" />
     <Compile Include="Communication\Model\ScadaHoldingRegistersAddressChanges.cs" />
     <Compile Include="Communication\Model\ScadaCoilAddressChanges.cs" />
+    <Compile Include="Exceptions\SCADA\AddressInfoNotExistsException.cs" />
+    <Compile Include="Exceptions\SCADA\IdNotExistsFault.cs" />
     <Compile Include="Exceptions\SCADA\NoUsedHoldingRegistersAddressesAvailableException.cs" />
     <Compile Include="Exceptions\SCADA\NoUsedCoilsAddressesAvailableException.cs" />
     <Compile Include="Interfaces\SCADA\Access\IScadaDbAccess.cs" />

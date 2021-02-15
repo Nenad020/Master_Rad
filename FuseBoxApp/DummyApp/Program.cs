@@ -1,4 +1,5 @@
-﻿using Common.Interfaces.SCADA.Access;
+﻿using Common.Communication.Client.SCADA;
+using Common.Interfaces.SCADA.Access;
 using ScadaDbAccess.Access;
 using ScadaDbAccess.Model;
 using System;
@@ -13,11 +14,19 @@ namespace DummyApp
 	{
 		static void Main(string[] args)
 		{
-			IScadaDbAccess<CoilsAddress> scadaDbAccess = new CoilsAddressAccess();
+			using (ScadaCommandClient client = new ScadaCommandClient())
+			{
+				try
+				{
+					client.Close(1);
+				}
+				catch
+				{
+					throw;
+				}
+			}
 
-			var result = scadaDbAccess.GetAllUsedEntities();
-
-			scadaDbAccess.UpdateValue(new List<CoilsAddress>() { ModelFactory.CreateCoilsAddress(1, 1, true, true), ModelFactory.CreateCoilsAddress(2, 2, true, true) });
+			Console.ReadLine();
 		}
 	}
 }

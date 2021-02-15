@@ -71,5 +71,10 @@
 		{
 			this.UsedAddressesUpdated?.Invoke(this, EventArgs.Empty);
 		}
+
+		public bool TryGetUsedCoilAddress(int id, out CoilsAddress usedCoilAddress)
+		{
+			return this.UsedCoilsAddress.TryGetValue(id, out usedCoilAddress);
+		}
 	}
 }

@@ -39,7 +39,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScadaModel.cs" />
   </ItemGroup>
@@ -55,6 +58,10 @@
     <ProjectReference Include="..\..\Common\Common.csproj">
       <Project>{82d35186-9cd9-42bf-a1fe-6a442ef330c8}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\EasyModbus.csproj">
+      <Project>{e9a211df-c3ba-48b2-8e3a-6590d6db5d33}</Project>
+      <Name>EasyModbus</Name>
     </ProjectReference>
     <ProjectReference Include="..\ScadaDbAccess\ScadaDbAccess.csproj">
       <Project>{c0606f53-ae4a-4492-9cf4-4352958963dc}</Project>

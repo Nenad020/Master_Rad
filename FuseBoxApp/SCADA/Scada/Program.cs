@@ -1,4 +1,5 @@
 ﻿using Common.Interfaces.SCADA.Access;
+using Scada.ServiceHosts;
 using ScadaDbAccess.Access;
 using ScadaDbAccess.Model;
 using ScadaService;
@@ -8,6 +9,8 @@ namespace Scada
 {
 	internal class Program
 	{
+		private static CommandServiceHost commandService;
+
 		private static IScadaDbAccess<CoilsAddress> coilAddressesAccess;
 
 		private static IScadaDbAccess<HoldingRegistersAddress> holdingRegistersAddressAccess;
@@ -28,8 +31,12 @@ namespace Scada
 			poller = new Poller(scadaModel, 3000, coilAddressesAccess);
 			scadaModel.UsedAddressesUpdated += (sender, args) => poller.UpdateAddressesToPoll();
 
+			commandService = new CommandServiceHost(scadaModel);
+			commandService.Open();
+
 			poller.StartPolling();
 			Console.ReadLine();
+			GracefulShutdown();
 		}
 
 		private static void WriteServiceName()
@@ -40,6 +47,11 @@ namespace Scada
 			Console.ForegroundColor = ConsoleColor.Green;
 			Console.WriteLine(serviceName);
 			Console.ResetColor();
+		}
+
+		private static void GracefulShutdown()
+		{
+			commandService?.Close();
 		}
 	}
 }
