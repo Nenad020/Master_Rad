@@ -1,5 +1,5 @@
-﻿using Common.Exceptions.Scada;
-using Common.Interfaces.SCADA.Access;
+﻿using Common.Exceptions.SCADA;
+using Common.Communication.Access.SCADA;
 using ScadaDbAccess.Model;
 using System;
 using System.Collections.Generic;
@@ -24,7 +24,7 @@ namespace ScadaDbAccess.Access
 				}
 				catch
 				{
-					throw new NoUsedCoilsAddressesAvailableException("No used holding registers addresses.");
+					throw new NoUsedHoldingRegistersAddressesAvailableException("No used holding registers addresses.");
 				}
 			}
 		}

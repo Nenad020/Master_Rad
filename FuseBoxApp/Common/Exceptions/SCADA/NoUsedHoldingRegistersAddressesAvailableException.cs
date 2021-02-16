@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Common.Exceptions.Scada
+namespace Common.Exceptions.SCADA
 {
 	public class NoUsedHoldingRegistersAddressesAvailableException : Exception
 	{

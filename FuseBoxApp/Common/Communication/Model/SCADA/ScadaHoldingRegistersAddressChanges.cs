@@ -1,6 +1,6 @@
-﻿namespace Common.Communication.Model
+﻿namespace Common.Communication.Model.SCADA
 {
-	using Common.Interfaces.SCADA.Model;
+	using Common.Communication.Model.SCADA.Interface;
 	using System;
 	using System.Collections.Generic;
 	using System.Runtime.Serialization;

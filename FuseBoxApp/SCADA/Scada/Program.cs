@@ -1,4 +1,4 @@
-﻿using Common.Interfaces.SCADA.Access;
+﻿using Common.Communication.Access.SCADA;
 using Scada.ServiceHosts;
 using ScadaDbAccess.Access;
 using ScadaDbAccess.Model;

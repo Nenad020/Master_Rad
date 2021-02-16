@@ -1,5 +1,5 @@
 ﻿using Common.Communication.Client.SCADA;
-using Common.Interfaces.SCADA.Access;
+using Common.Communication.Access.SCADA;
 using ScadaDbAccess.Access;
 using ScadaDbAccess.Model;
 using System;

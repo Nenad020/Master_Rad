@@ -1,6 +1,6 @@
-﻿using Common.Communication.Model;
-using Common.Interfaces.SCADA.Access;
-using Common.Interfaces.SCADA.Model;
+﻿using Common.Communication.Model.SCADA;
+using Common.Communication.Access.SCADA;
+using Common.Communication.Model.SCADA.Interface;
 using EasyModbus;
 using Scada.Extensions;
 using ScadaDbAccess.Model;
