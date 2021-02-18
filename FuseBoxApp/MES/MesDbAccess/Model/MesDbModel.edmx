@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BreakerId" Type="int" Nullable="false" />
           <Property Name="Timestamp" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
@@ -20,10 +20,20 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CurrentState" Type="bit" Nullable="false" />
+          <Property Name="LastState" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ElectricityMeterMes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Value" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityContainer Name="MesDbModelStoreContainer">
           <EntitySet Name="AlarmMes" EntityType="Self.AlarmMes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BreakerMes" EntityType="Self.BreakerMes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ElectricityMeterMes" EntityType="Self.ElectricityMeterMes" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -34,7 +44,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BreakerId" Type="Int32" Nullable="false" />
           <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
@@ -45,10 +55,20 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CurrentState" Type="Boolean" Nullable="false" />
+          <Property Name="LastState" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ElectricityMeterMe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="Int64" Nullable="false" />
         </EntityType>
         <EntityContainer Name="MesDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AlarmMes" EntityType="Self.AlarmMe" />
           <EntitySet Name="BreakerMes" EntityType="Self.BreakerMe" />
+          <EntitySet Name="ElectricityMeterMes" EntityType="Self.ElectricityMeterMe" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -71,6 +91,16 @@
               <MappingFragment StoreEntitySet="BreakerMes">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CurrentState" ColumnName="CurrentState" />
+                <ScalarProperty Name="LastState" ColumnName="LastState" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ElectricityMeterMes">
+            <EntityTypeMapping TypeName="MesDbModel.ElectricityMeterMe">
+              <MappingFragment StoreEntitySet="ElectricityMeterMes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -2,27 +2,25 @@
 {
 	public static class ModelFactory
 	{
-		public static CoilsAddress CreateCoilsAddress(int address, int id, bool used, bool value)
+		public static CoilsAddress CreateCoilsAddress(int address, int id, bool used)
 		{
 			var coilAddress = new CoilsAddress
 			{
 				Address = address,
 				Id = id,
-				Used = used,
-				Value = value
+				Used = used
 			};
 
 			return coilAddress;
 		}
 
-		public static HoldingRegistersAddress CreateHoldingRegistersAddress(int address, int id, bool used, int value)
+		public static HoldingRegistersAddress CreateHoldingRegistersAddress(int address, int id, bool used)
 		{
 			var holdingRegistersAddress = new HoldingRegistersAddress
 			{
 				Address = address,
 				Id = id,
-				Used = used,
-				Value = value
+				Used = used
 			};
 
 			return holdingRegistersAddress;

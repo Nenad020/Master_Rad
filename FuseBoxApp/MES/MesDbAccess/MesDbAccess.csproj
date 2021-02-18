@@ -50,66 +50,67 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Access\ElectricityMeterAccess.cs" />
     <Compile Include="Access\BreakerAccess.cs" />
     <Compile Include="Access\AlarmAccess.cs" />
     <Compile Include="Model\AlarmMe.cs">
-      <DependentUpon>MesModel.tt</DependentUpon>
+      <DependentUpon>MesDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\BreakerMe.cs">
-      <DependentUpon>MesModel.tt</DependentUpon>
+      <DependentUpon>MesDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\MesModel.Context.cs">
+    <Compile Include="Model\ElectricityMeterMe.cs">
+      <DependentUpon>MesDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MesDbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MesModel.Context.tt</DependentUpon>
+      <DependentUpon>MesDbModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\MesModel.cs">
+    <Compile Include="Model\MesDbModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MesModel.tt</DependentUpon>
+      <DependentUpon>MesDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\MesModel.Designer.cs">
+    <Compile Include="Model\MesDbModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MesModel.edmx</DependentUpon>
+      <DependentUpon>MesDbModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\ModelFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Model\MesModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MesModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.Config" />
-    <None Include="Model\MesModel.edmx.diagram">
-      <DependentUpon>MesModel.edmx</DependentUpon>
+    <EntityDeploy Include="Model\MesDbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MesDbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\MesDbModel.edmx.diagram">
+      <DependentUpon>MesDbModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\MesModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MesModel.Context.cs</LastGenOutput>
-      <DependentUpon>MesModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Model\MesModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MesModel.edmx</DependentUpon>
-      <LastGenOutput>MesModel.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.csproj">
       <Project>{82d35186-9cd9-42bf-a1fe-6a442ef330c8}</Project>
       <Name>Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\MesDbModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MesDbModel.edmx</DependentUpon>
+      <LastGenOutput>MesDbModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\MesDbModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MesDbModel.edmx</DependentUpon>
+      <LastGenOutput>MesDbModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

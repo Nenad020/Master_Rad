@@ -17,6 +17,5 @@ namespace ScadaDbAccess.Model
         public int Address { get; set; }
         public int Id { get; set; }
         public bool Used { get; set; }
-        public int Value { get; set; }
     }
 }

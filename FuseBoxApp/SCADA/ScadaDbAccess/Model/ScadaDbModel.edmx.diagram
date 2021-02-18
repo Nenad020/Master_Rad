@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="40bab7e9a81b4a80b05810717fca7f67" Name="Diagram1">
+      <Diagram DiagramId="7ace990910a0422eafdf26d250211766" Name="Diagram1">
         <EntityTypeShape EntityType="ScadaDbModel.C__RefactorLog" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ScadaDbModel.CoilsAddress" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ScadaDbModel.HoldingRegistersAddress" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />

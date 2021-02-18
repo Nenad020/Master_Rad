@@ -68,6 +68,8 @@
     <Compile Include="Communication\Contract\SCADA\ICommand.cs" />
     <Compile Include="Communication\Model\SCADA\ScadaCoilAddressChanges.cs" />
     <Compile Include="Communication\Model\SCADA\ScadaHoldingRegistersAddressChanges.cs" />
+    <Compile Include="Communication\WCFRequestsQueue.cs" />
+    <Compile Include="Exceptions\MES\NoElecticityMeterMesAvailableException.cs" />
     <Compile Include="Exceptions\MES\NoBreakerMesAvailableException.cs" />
     <Compile Include="Exceptions\MES\NoAlarmMesAvailableException.cs" />
     <Compile Include="Exceptions\SCADA\AddressInfoNotExistsException.cs" />

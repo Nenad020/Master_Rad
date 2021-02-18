@@ -7,17 +7,17 @@
 	using System.Text;
 
 	[DataContract]
-	public class ScadaHoldingRegistersAddressChanges : IScadaChanges<int>
+	public class ScadaHoldingRegistersAddressChanges : IScadaChanges<long>
 	{
 		[DataMember]
-		public Dictionary<int, int> Values { get; set; }
+		public Dictionary<int, long> Values { get; set; }
 
 		public ScadaHoldingRegistersAddressChanges()
 		{
-			this.Values = new Dictionary<int, int>(ushort.MaxValue);
+			this.Values = new Dictionary<int, long>(ushort.MaxValue);
 		}
 
-		public void Update(IReadOnlyList<int> ids, IReadOnlyList<int> values)
+		public void Update(IReadOnlyList<int> ids, IReadOnlyList<long> values)
 		{
 			if (ids.Count != values.Count)
 			{

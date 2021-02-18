@@ -12,11 +12,9 @@ namespace MesDbAccess.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class BreakerMe
+    public partial class ElectricityMeterMe
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public bool CurrentState { get; set; }
-        public bool LastState { get; set; }
+        public long Value { get; set; }
     }
 }

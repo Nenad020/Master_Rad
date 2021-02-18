@@ -63,6 +63,10 @@
       <Project>{82d35186-9cd9-42bf-a1fe-6a442ef330c8}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MES\MesDbAccess\MesDbAccess.csproj">
+      <Project>{34355030-0c1d-4529-b4e5-d874698e4fd9}</Project>
+      <Name>MesDbAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SCADA\ScadaDbAccess\ScadaDbAccess.csproj">
       <Project>{c0606f53-ae4a-4492-9cf4-4352958963dc}</Project>
       <Name>ScadaDbAccess</Name>

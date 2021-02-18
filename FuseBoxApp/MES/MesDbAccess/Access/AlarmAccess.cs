@@ -47,5 +47,10 @@ namespace MesDbAccess.Access
 				}
 			}
 		}
+
+		public void UpdateEntity(List<AlarmMe> entites)
+		{
+			AddEntity(entites);
+		}
 	}
 }

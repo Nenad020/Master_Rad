@@ -18,7 +18,6 @@
           <Property Name="Address" Type="int" Nullable="false" />
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Used" Type="bit" Nullable="false" />
-          <Property Name="Value" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="HoldingRegistersAddress">
           <Key>
@@ -27,7 +26,6 @@
           <Property Name="Address" Type="int" Nullable="false" />
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Used" Type="bit" Nullable="false" />
-          <Property Name="Value" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ScadaDbModelStoreContainer">
           <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
@@ -52,7 +50,6 @@
           <Property Name="Address" Type="Int32" Nullable="false" />
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Used" Type="Boolean" Nullable="false" />
-          <Property Name="Value" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="HoldingRegistersAddress">
           <Key>
@@ -61,7 +58,6 @@
           <Property Name="Address" Type="Int32" Nullable="false" />
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Used" Type="Boolean" Nullable="false" />
-          <Property Name="Value" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ScadaDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
@@ -87,7 +83,6 @@
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Used" ColumnName="Used" />
-                <ScalarProperty Name="Value" ColumnName="Value" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -97,7 +92,6 @@
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Used" ColumnName="Used" />
-                <ScalarProperty Name="Value" ColumnName="Value" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

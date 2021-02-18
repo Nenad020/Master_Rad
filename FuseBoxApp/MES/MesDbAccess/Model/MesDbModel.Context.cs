@@ -27,5 +27,6 @@ namespace MesDbAccess.Model
     
         public virtual DbSet<AlarmMe> AlarmMes { get; set; }
         public virtual DbSet<BreakerMe> BreakerMes { get; set; }
+        public virtual DbSet<ElectricityMeterMe> ElectricityMeterMes { get; set; }
     }
 }

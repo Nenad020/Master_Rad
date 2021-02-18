@@ -7,5 +7,7 @@ namespace Common.Communication.Access.MES
 		List<T> GetAllEntities();
 
 		void AddEntity(List<T> entites);
+
+		void UpdateEntity(List<T> entites);
 	}
 }

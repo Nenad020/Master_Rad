@@ -71,29 +71,29 @@
     <Compile Include="Access\CoilsAddressAccess.cs" />
     <Compile Include="Access\HoldingRegistersAddressAccess.cs" />
     <Compile Include="Model\CoilsAddress.cs">
-      <DependentUpon>ScadaModel.tt</DependentUpon>
+      <DependentUpon>ScadaDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\C__RefactorLog.cs">
-      <DependentUpon>ScadaModel.tt</DependentUpon>
+      <DependentUpon>ScadaDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\HoldingRegistersAddress.cs">
-      <DependentUpon>ScadaModel.tt</DependentUpon>
+      <DependentUpon>ScadaDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ModelFactory.cs" />
-    <Compile Include="Model\ScadaModel.Context.cs">
+    <Compile Include="Model\ScadaDbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ScadaModel.Context.tt</DependentUpon>
+      <DependentUpon>ScadaDbModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\ScadaModel.cs">
+    <Compile Include="Model\ScadaDbModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ScadaModel.tt</DependentUpon>
+      <DependentUpon>ScadaDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\ScadaModel.Designer.cs">
+    <Compile Include="Model\ScadaDbModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ScadaModel.edmx</DependentUpon>
+      <DependentUpon>ScadaDbModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -104,33 +104,30 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Model\ScadaModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ScadaModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.Config" />
-    <None Include="Model\ScadaModel.edmx.diagram">
-      <DependentUpon>ScadaModel.edmx</DependentUpon>
+    <EntityDeploy Include="Model\ScadaDbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ScadaDbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\ScadaDbModel.edmx.diagram">
+      <DependentUpon>ScadaDbModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\ScadaModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ScadaModel.Context.cs</LastGenOutput>
-      <DependentUpon>ScadaModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Model\ScadaModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ScadaModel.edmx</DependentUpon>
-      <LastGenOutput>ScadaModel.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Model\ScadaDbModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ScadaDbModel.edmx</DependentUpon>
+      <LastGenOutput>ScadaDbModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\ScadaDbModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ScadaDbModel.edmx</DependentUpon>
+      <LastGenOutput>ScadaDbModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

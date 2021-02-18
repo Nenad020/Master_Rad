@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MesDbAccess.Access;
+using MesDbAccess.Model;
 
 namespace DummyApp
 {
@@ -14,7 +16,16 @@ namespace DummyApp
 	{
 		static void Main(string[] args)
 		{
-			using (ScadaCommandClient client = new ScadaCommandClient())
+			/*BreakerAccess access = new BreakerAccess();
+			var entities = new List<BreakerMe>();
+			for (int i = 1; i < 16; i++)
+			{
+				entities.Add(MesDbAccess.Model.ModelFactory.CreateBreakerMes(i, $"Breaker_{i}"));
+			}
+
+			access.AddEntity(entities);*/
+
+			/*using (ScadaCommandClient client = new ScadaCommandClient())
 			{
 				try
 				{
@@ -24,7 +35,14 @@ namespace DummyApp
 				{
 					throw;
 				}
-			}
+			}*/
+
+			AlarmAccess access = new AlarmAccess();
+			access.AddEntity(new List<AlarmMe>()
+			{
+				MesDbAccess.Model.ModelFactory.CreateAlarmMes(4, "nema"),
+				MesDbAccess.Model.ModelFactory.CreateAlarmMes(5, "tu tu")
+			});
 
 			Console.ReadLine();
 		}

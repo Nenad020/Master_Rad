@@ -140,9 +140,9 @@ namespace Scada
 
 			pollingData.Update(idsToPoll, addressesToPoll, mdbPollCount);
 
-			WriteCoilAddressValuesOnSimulator(usedCoilsAddresses);
-			WriteHoldingRegisterAddressValuesOnSimulator(scadaModel.UsedHoldingRegistersAddress);
-			UpdateCurrentState(usedCoilsAddresses.Values.Select(x => x.Value).ToArray());
+			//WriteCoilAddressValuesOnSimulator(usedCoilsAddresses);
+			//WriteHoldingRegisterAddressValuesOnSimulator(scadaModel.UsedHoldingRegistersAddress);
+			//UpdateCurrentState(usedCoilsAddresses.Values.Select(x => x.Value).ToArray());
 
 			Console.WriteLine("Polling addresses updated.");
 			if (stopped)
@@ -212,7 +212,7 @@ namespace Scada
 						continue;
 					}
 
-					UpdateHoldingRegistersAddress(response);
+					//UpdateHoldingRegistersAddress(response);
 					PollReplyReceived(response);
 					Thread.Sleep(delayInMilliseconds);
 				}
@@ -221,7 +221,7 @@ namespace Scada
 
 		private void UpdateHoldingRegistersAddress(bool[] polledValues)
 		{
-			if (polledValues == null || polledValues.Length == 0)
+			/*if (polledValues == null || polledValues.Length == 0)
 			{
 				return;
 			}
@@ -237,7 +237,7 @@ namespace Scada
 			}
 
 			ModbusClient.WriteSingleRegister(0, holdingRegisterAddress[0]);
-			UpdateScadaDbHoldingRegistersAddressValues(0, holdingRegisterAddress[0]);
+			UpdateScadaDbHoldingRegistersAddressValues(0, holdingRegisterAddress[0]);*/
 		}
 
 		private void PollReplyReceived(bool[] polledValues)
@@ -254,7 +254,7 @@ namespace Scada
 			scadaCoilAddressChanges.Update(difference.Ids, difference.Values);
 
 			//TODO: OBAVESTITI OE O PROMENAMA
-			UpdateScadaDbCoilsAddressValues(difference);
+			//UpdateScadaDbCoilsAddressValues(difference);
 
 			Console.WriteLine(scadaCoilAddressChanges.Any() ? $"Polled changes:\n{scadaCoilAddressChanges}" : "No changes...");
 		}
@@ -336,33 +336,38 @@ namespace Scada
 			return change;
 		}
 
-		private void WriteCoilAddressValuesOnSimulator(Dictionary<int, CoilsAddress> coilsAddress)
+		private void WriteCoilAddressValuesOnSimulator()
 		{
-			ushort startingAddress;
+			//TODO: Ovde pozvati MES i traziti Breaker podatke, pa ispisati one podatke koje mi trebaju
+			//		staviti da vraca niz vrednosti bool[]
+
+			/*ushort startingAddress;
 
 			foreach (var coilAddress in coilsAddress)
 			{
 				startingAddress = (ushort)(coilAddress.Key - 1);
 
 				ModbusClient.WriteSingleCoil(startingAddress, coilAddress.Value.Value);
-			}
+			}*/
 		}
 
-		private void WriteHoldingRegisterAddressValuesOnSimulator(Dictionary<int, HoldingRegistersAddress> holdingRegistersAddress)
+		private void WriteHoldingRegisterAddressValuesOnSimulator()
 		{
-			ushort startingAddress;
+			//TODO: Ovde pozvati MES i traziti Electicity Meter podatke i ispisati ono sto mi treba
+
+			/*ushort startingAddress;
 
 			foreach (var holdingRegisterAddress in holdingRegistersAddress)
 			{
 				startingAddress = (ushort)(holdingRegisterAddress.Key - 1);
 
 				ModbusClient.WriteSingleRegister(startingAddress, holdingRegisterAddress.Value.Value);
-			}
+			}*/
 		}
 
 		private void UpdateScadaDbCoilsAddressValues(Change difference)
 		{
-			int newChanges = difference.Addresses.Length;
+			/*int newChanges = difference.Addresses.Length;
 			List<CoilsAddress> coilsAddresses;
 
 			if (newChanges == 0)
@@ -376,15 +381,15 @@ namespace Scada
 				coilsAddresses.Add(ModelFactory.CreateCoilsAddress(difference.Addresses[i], difference.Ids[i], true, difference.Values[i]));
 			}
 
-			coilAddressesAccess.UpdateValue(coilsAddresses);
+			coilAddressesAccess.UpdateValue(coilsAddresses);*/
 		}
 
 		private void UpdateScadaDbHoldingRegistersAddressValues(int address, int value)
 		{
-			holdingRegistersAddressAccess.UpdateValue(new List<HoldingRegistersAddress>()
+			/*holdingRegistersAddressAccess.UpdateValue(new List<HoldingRegistersAddress>()
 			{
 				ModelFactory.CreateHoldingRegistersAddress(address + 1, 1, true, value)
-			});
+			});*/
 		}
 
 		#endregion Methods
