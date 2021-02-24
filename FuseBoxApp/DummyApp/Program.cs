@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MesDbAccess.Access;
 using MesDbAccess.Model;
+using Common.Communication.Client.MES;
 
 namespace DummyApp
 {
@@ -20,29 +21,29 @@ namespace DummyApp
 			var entities = new List<BreakerMe>();
 			for (int i = 1; i < 16; i++)
 			{
-				entities.Add(MesDbAccess.Model.ModelFactory.CreateBreakerMes(i, $"Breaker_{i}"));
+				entities.Add(MesDbAccess.Model.ModelFactory.CreateBreakerMes(i, $"Breaker_{i}", false, false));
 			}
 
 			access.AddEntity(entities);*/
 
-			/*using (ScadaCommandClient client = new ScadaCommandClient())
+			using (MesToScadaInitClient client = new MesToScadaInitClient())
 			{
 				try
 				{
-					client.Close(1);
+					var result = client.GetBreakers();
 				}
 				catch
 				{
 					throw;
 				}
-			}*/
+			}
 
-			AlarmAccess access = new AlarmAccess();
+			/*AlarmAccess access = new AlarmAccess();
 			access.AddEntity(new List<AlarmMe>()
 			{
 				MesDbAccess.Model.ModelFactory.CreateAlarmMes(4, "nema"),
 				MesDbAccess.Model.ModelFactory.CreateAlarmMes(5, "tu tu")
-			});
+			});*/
 
 			Console.ReadLine();
 		}

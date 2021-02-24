@@ -62,10 +62,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Communication\Access\MES\IMesDbAccess.cs" />
-    <Compile Include="Communication\Client\MES\CalculationCommandClient.cs" />
+    <Compile Include="Communication\Client\MES\MesCommandClient.cs" />
+    <Compile Include="Communication\Client\MES\MesToScadaInitClient.cs" />
     <Compile Include="Communication\Client\SCADA\ScadaCommandClient.cs" />
     <Compile Include="Communication\Contract\MES\IMESCommand.cs" />
+    <Compile Include="Communication\Contract\MES\IMesInitValue.cs" />
     <Compile Include="Communication\Contract\SCADA\ICommand.cs" />
+    <Compile Include="Communication\Model\MES\Interface\IMesInit.cs" />
+    <Compile Include="Communication\Model\MES\MesMeterInit.cs" />
+    <Compile Include="Communication\Model\MES\MesBreakerInit.cs" />
     <Compile Include="Communication\Model\SCADA\ScadaCoilAddressChanges.cs" />
     <Compile Include="Communication\Model\SCADA\ScadaHoldingRegistersAddressChanges.cs" />
     <Compile Include="Communication\WCFRequestsQueue.cs" />

@@ -3,13 +3,13 @@ using System.ServiceModel;
 
 namespace Common.Communication.Client.MES
 {
-	public class CalculationCommandClient : ClientBase<IMESCommand>, IMESCommand
+	public class MesCommandClient : ClientBase<IMESCommand>, IMESCommand
 	{
-		public CalculationCommandClient()
+		public MesCommandClient()
 		{
 		}
 
-		public CalculationCommandClient(string endpointConfigurationName)
+		public MesCommandClient(string endpointConfigurationName)
 		   : base(endpointConfigurationName)
 		{
 		}

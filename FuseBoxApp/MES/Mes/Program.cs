@@ -1,12 +1,9 @@
 ﻿using Common.Communication.Access.MES;
+using Mes.ServiceHosts;
 using MesDbAccess.Access;
 using MesDbAccess.Model;
 using MesService.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Mes
 {
@@ -17,6 +14,8 @@ namespace Mes
 		private static IMesDbAccess<BreakerMe> breakerAccess;
 
 		private static IMesDbAccess<ElectricityMeterMe> electricityMeterAccess;
+
+		private static MesToScadaInitServiceHost mesToScadaInitServiceHost;
 
 		private static MesModel mesModel;
 
@@ -30,6 +29,9 @@ namespace Mes
 
 			mesModel = new MesModel(alarmAccess, breakerAccess, electricityMeterAccess);
 			mesModel.Initialize();
+
+			mesToScadaInitServiceHost = new MesToScadaInitServiceHost(mesModel);
+			mesToScadaInitServiceHost.Open();
 
 			Console.ReadLine();
 			GracefulShutdown();
@@ -47,6 +49,7 @@ namespace Mes
 
 		private static void GracefulShutdown()
 		{
+			mesToScadaInitServiceHost?.Close();
 		}
 	}
 }
