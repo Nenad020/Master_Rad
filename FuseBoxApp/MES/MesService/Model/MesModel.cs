@@ -70,5 +70,60 @@ namespace MesService.Model
 			ElecticityMeters = new Dictionary<int, ElectricityMeterMe>(meters.Count);
 			meters.ForEach(x => ElecticityMeters.Add(x.Id, x));
 		}
+
+		public BreakerMe GetBreaker(int id)
+		{
+			BreakerMe breaker;
+			if (!Breakers.TryGetValue(id, out breaker))
+			{
+				throw new ArgumentException($"Breaker with id {id} doesn't exist in the model.");
+			}
+
+			return breaker;
+		}
+
+		public ElectricityMeterMe GetMeter(int id)
+		{
+			ElectricityMeterMe meter;
+			if (!ElecticityMeters.TryGetValue(id, out meter))
+			{
+				throw new ArgumentException($"Electricity meter with id {id} doesn't exist in the model.");
+			}
+
+			return meter;
+		}
+
+		public void UpdateAlarm(AlarmMe alarm)
+		{
+			AlarmMe currentAlarm;
+			if (!Alarms.TryGetValue(alarm.BreakerId, out currentAlarm))
+			{
+				throw new ArgumentException($"Alarm with breaker id {alarm.BreakerId} doesn't exist in the model.");
+			}
+
+			Alarms[alarm.Id] = alarm;
+		}
+
+		public void UpdateBreaker(BreakerMe breaker)
+		{
+			BreakerMe currentBreaker;
+			if (!Breakers.TryGetValue(breaker.Id, out currentBreaker))
+			{
+				throw new ArgumentException($"Breaker with id {breaker.Id} doesn't exist in the model.");
+			}
+
+			Breakers[breaker.Id] = breaker;
+		}
+
+		public void UpdateMeter(int value)
+		{
+			ElectricityMeterMe meter;
+			if (!ElecticityMeters.TryGetValue(1, out meter))
+			{
+				throw new ArgumentException($"Electricity meter with id {1} doesn't exist in the model.");
+			}
+
+			ElecticityMeters[1].Value = value;
+		}
 	}
 }

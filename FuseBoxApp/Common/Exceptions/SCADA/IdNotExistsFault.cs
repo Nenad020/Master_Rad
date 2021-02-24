@@ -11,7 +11,7 @@ namespace Common.Exceptions.SCADA
 
 		public IdNotExistsFault(long gid)
 		{
-			this.GID = gid;
+			GID = gid;
 		}
 
 		[DataMember]

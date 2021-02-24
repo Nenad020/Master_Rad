@@ -17,6 +17,8 @@ namespace Mes
 
 		private static MesToScadaInitServiceHost mesToScadaInitServiceHost;
 
+		private static MesChangesServiceHost mesChangesServiceHost;
+
 		private static MesModel mesModel;
 
 		static void Main(string[] args)
@@ -32,6 +34,9 @@ namespace Mes
 
 			mesToScadaInitServiceHost = new MesToScadaInitServiceHost(mesModel);
 			mesToScadaInitServiceHost.Open();
+
+			mesChangesServiceHost = new MesChangesServiceHost(alarmAccess, breakerAccess, electricityMeterAccess, mesModel);
+			mesChangesServiceHost.Open();
 
 			Console.ReadLine();
 			GracefulShutdown();

@@ -12,6 +12,11 @@ using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
+using Common.Communication.Client.MES;
+using Common.Communication.Model.MES;
+using System.ServiceModel;
+using Common.Exceptions.MES;
+using System.Threading.Tasks;
 
 namespace Scada
 {
@@ -29,11 +34,7 @@ namespace Scada
 
 		private readonly BitArray receivedState;
 
-		private readonly IScadaChanges<bool> scadaCoilAddressChanges;
-
-		private readonly IScadaDbAccess<CoilsAddress> coilAddressesAccess;
-
-		private readonly IScadaDbAccess<HoldingRegistersAddress> holdingRegistersAddressAccess;
+		private readonly ScadaCoilAddressChanges scadaCoilAddressChanges;
 
 		private readonly string modbusIpAddress;
 
@@ -49,8 +50,7 @@ namespace Scada
 
 		#endregion Fields
 
-		public Poller(ScadaModel scadaModel, int delayInMilliseconds, IScadaDbAccess<CoilsAddress> coilAddressesAccess, 
-			IScadaDbAccess<HoldingRegistersAddress> holdingRegistersAddressAccess)
+		public Poller(ScadaModel scadaModel, int delayInMilliseconds)
 		{
 			this.startup = true;
 			this.pollingData = new PollingData();
@@ -58,8 +58,6 @@ namespace Scada
 			this.DoPoll = false;
 			this.delayInMilliseconds = delayInMilliseconds;
 			this.scadaModel = scadaModel;
-			this.coilAddressesAccess = coilAddressesAccess;
-			this.holdingRegistersAddressAccess = holdingRegistersAddressAccess;
 			this.currentState = new BitArray(ushort.MaxValue);
 			this.receivedState = new BitArray(ushort.MaxValue);
 			this.modbusIpAddress = ConfigurationManager.AppSettings["mdbSimIp"];
@@ -140,9 +138,8 @@ namespace Scada
 
 			pollingData.Update(idsToPoll, addressesToPoll, mdbPollCount);
 
-			//WriteCoilAddressValuesOnSimulator(usedCoilsAddresses);
-			//WriteHoldingRegisterAddressValuesOnSimulator(scadaModel.UsedHoldingRegistersAddress);
-			//UpdateCurrentState(usedCoilsAddresses.Values.Select(x => x.Value).ToArray());
+			WriteCoilAddressValuesOnSimulator();
+			WriteHoldingRegisterAddressValuesOnSimulator();
 
 			Console.WriteLine("Polling addresses updated.");
 			if (stopped)
@@ -212,7 +209,7 @@ namespace Scada
 						continue;
 					}
 
-					//UpdateHoldingRegistersAddress(response);
+					UpdateHoldingRegistersAddress(response);
 					PollReplyReceived(response);
 					Thread.Sleep(delayInMilliseconds);
 				}
@@ -221,7 +218,7 @@ namespace Scada
 
 		private void UpdateHoldingRegistersAddress(bool[] polledValues)
 		{
-			/*if (polledValues == null || polledValues.Length == 0)
+			if (polledValues == null || polledValues.Length == 0)
 			{
 				return;
 			}
@@ -237,7 +234,7 @@ namespace Scada
 			}
 
 			ModbusClient.WriteSingleRegister(0, holdingRegisterAddress[0]);
-			UpdateScadaDbHoldingRegistersAddressValues(0, holdingRegisterAddress[0]);*/
+			scadaCoilAddressChanges.MeterAdd(holdingRegisterAddress[0]);
 		}
 
 		private void PollReplyReceived(bool[] polledValues)
@@ -254,7 +251,7 @@ namespace Scada
 			scadaCoilAddressChanges.Update(difference.Ids, difference.Values);
 
 			//TODO: OBAVESTITI OE O PROMENAMA
-			//UpdateScadaDbCoilsAddressValues(difference);
+			PublishChanges().ContinueWith(PublishFinished);
 
 			Console.WriteLine(scadaCoilAddressChanges.Any() ? $"Polled changes:\n{scadaCoilAddressChanges}" : "No changes...");
 		}
@@ -338,58 +335,74 @@ namespace Scada
 
 		private void WriteCoilAddressValuesOnSimulator()
 		{
-			//TODO: Ovde pozvati MES i traziti Breaker podatke, pa ispisati one podatke koje mi trebaju
-			//		staviti da vraca niz vrednosti bool[]
+			MesBreakerInit result = null;
 
-			/*ushort startingAddress;
+			using (MesToScadaInitClient client = new MesToScadaInitClient())
+			{
+				try
+				{
+					result = client.GetBreakers();
+				}
+				catch (FaultException<ScadaReadFault> e)
+				{
+					Console.WriteLine($"Scada read failed. {e.Message}");
+				}
+			}
 
-			foreach (var coilAddress in coilsAddress)
+			ushort startingAddress;
+
+			foreach (var coilAddress in result.Values)
 			{
 				startingAddress = (ushort)(coilAddress.Key - 1);
 
-				ModbusClient.WriteSingleCoil(startingAddress, coilAddress.Value.Value);
-			}*/
+				ModbusClient.WriteSingleCoil(startingAddress, coilAddress.Value);
+			}
+
+			UpdateCurrentState(result.Values.Values.ToArray());
 		}
 
 		private void WriteHoldingRegisterAddressValuesOnSimulator()
 		{
-			//TODO: Ovde pozvati MES i traziti Electicity Meter podatke i ispisati ono sto mi treba
+			MesMeterInit result = null;
 
-			/*ushort startingAddress;
-
-			foreach (var holdingRegisterAddress in holdingRegistersAddress)
+			using (MesToScadaInitClient client = new MesToScadaInitClient())
 			{
-				startingAddress = (ushort)(holdingRegisterAddress.Key - 1);
+				try
+				{
+					result = client.GetMeters();
+				}
+				catch (FaultException<ScadaReadFault> e)
+				{
+					Console.WriteLine($"Scada read failed. {e.Message}");
+				}
+			}
 
-				ModbusClient.WriteSingleRegister(startingAddress, holdingRegisterAddress.Value.Value);
-			}*/
+			ushort startingAddress;
+
+			foreach (var coilAddress in result.Values)
+			{
+				startingAddress = (ushort)(coilAddress.Key - 1);
+
+				ModbusClient.WriteSingleRegister(startingAddress, (int)coilAddress.Value);
+			}
 		}
 
-		private void UpdateScadaDbCoilsAddressValues(Change difference)
+		private async Task PublishChanges()
 		{
-			/*int newChanges = difference.Addresses.Length;
-			List<CoilsAddress> coilsAddresses;
-
-			if (newChanges == 0)
+			if (!scadaCoilAddressChanges.Any())
 			{
 				return;
 			}
 
-			coilsAddresses = new List<CoilsAddress>(difference.Addresses.Length);
-			for (int i = 0; i < newChanges; i++)
+			using (var client = new MesChangesClient())
 			{
-				coilsAddresses.Add(ModelFactory.CreateCoilsAddress(difference.Addresses[i], difference.Ids[i], true, difference.Values[i]));
+				client.Open();
+				await client.BreakerChangeAsync(scadaCoilAddressChanges).ConfigureAwait(false);
 			}
-
-			coilAddressesAccess.UpdateValue(coilsAddresses);*/
 		}
 
-		private void UpdateScadaDbHoldingRegistersAddressValues(int address, int value)
+		private void PublishFinished(Task obj)
 		{
-			/*holdingRegistersAddressAccess.UpdateValue(new List<HoldingRegistersAddress>()
-			{
-				ModelFactory.CreateHoldingRegistersAddress(address + 1, 1, true, value)
-			});*/
 		}
 
 		#endregion Methods

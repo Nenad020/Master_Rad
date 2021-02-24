@@ -12,8 +12,12 @@
 		[DataMember]
 		public Dictionary<int, bool> Values { get; set; }
 
+		[DataMember]
+		public int Meter { get; set; }
+
 		public ScadaCoilAddressChanges()
 		{
+			this.Meter = 0;
 			this.Values = new Dictionary<int, bool>(ushort.MaxValue);
 		}
 
@@ -57,6 +61,11 @@
 		public bool Any()
 		{
 			return this.Values.Count > 0;
+		}
+
+		public void MeterAdd(int value)
+		{
+			Meter += value;
 		}
 	}
 }

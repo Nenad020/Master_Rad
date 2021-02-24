@@ -9,5 +9,7 @@ namespace Common.Communication.Model.SCADA.Interface
 		void Clear();
 
 		bool Any();
+
+		void MeterAdd(int value);
 	}
 }

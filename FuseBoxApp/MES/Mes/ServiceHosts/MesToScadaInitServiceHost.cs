@@ -22,7 +22,7 @@ namespace Mes.ServiceHosts
         public void Open()
         {
             host.Open();
-            Console.WriteLine("MesToScadaInit Service Started...");
+            Console.WriteLine("MES to SCADA Init Service Started...");
             Console.WriteLine("Endpoints:");
 
             foreach (Uri uri in host.BaseAddresses)
@@ -36,7 +36,7 @@ namespace Mes.ServiceHosts
         public void Close()
         {
             host.Close();
-            Console.WriteLine("Command Service Stopped...");
+            Console.WriteLine("MES to SCADA Init Service Stopped...");
         }
     }
 }
