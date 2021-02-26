@@ -1,14 +1,14 @@
 ﻿using Common.Communication;
 using Common.Communication.Access.MES;
+using Common.Communication.Client.UI;
 using Common.Communication.Contract.MES;
-using Common.Communication.Model.SCADA;
+using Common.Model.SCADA;
+using Common.Model.UI;
 using MesDbAccess.Model;
 using MesService.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MesService
@@ -56,6 +56,7 @@ namespace MesService
 		private async Task HandleScadaChanges(ScadaCoilAddressChanges coilAddressChanges)
 		{
 			ClearListDbs();
+			UIModelObject uIModelObject = new UIModelObject();
 
 			foreach (var change in coilAddressChanges.Values)
 			{
@@ -75,24 +76,30 @@ namespace MesService
 
 				mesModel.UpdateBreaker(breaker);
 				breakersDb.Add(ModelFactory.CreateBreakerMes(id, breaker.Name, breaker.CurrentState, breaker.LastState));
-				//TODO: Dodati taj prekidac u UI model
+				uIModelObject.UIBreakers.Add(new UIBreaker(id, breaker.Name, breaker.CurrentState, breaker.LastState));
 
 				var alarm = ModelFactory.CreateAlarmMes(id, CreateAlarmMessage(id, breaker.CurrentState));
 				mesModel.UpdateAlarm(alarm);
 				alarmsDb.Add(alarm);
-				//TODO: Dodati alarm u UI model
+
+				if (breaker.CurrentState)
+				{
+					uIModelObject.UIAlarms.Add(new UIAlarm(alarm.BreakerId, alarm.Timestamp, alarm.Message, true));
+				}
+				else
+				{
+					uIModelObject.UIAlarms.Add(new UIAlarm(alarm.BreakerId, alarm.Timestamp, alarm.Message, false));
+				}
+				
 			}
 
-			mesModel.UpdateMeter(coilAddressChanges.Meter);
+			/*mesModel.UpdateMeter(coilAddressChanges.Meter);
 			metersDb.Add(ModelFactory.CreateElectricityMeterMes(1, coilAddressChanges.Meter));
-			//TODO: Dodati taj metar u UI model
+			uIModelObject.UIElectricityMeters.Add(new UIElectricityMeter(1, coilAddressChanges.Meter));*/
 
-			alarmAccess.AddEntity(alarmsDb);
-			breakerAccess.UpdateEntity(breakersDb);
-			electricityMeterAccess.UpdateEntity(metersDb);
+			UpdateDbs();
 
-			//TODO: Obavesiti UI
-			await Task.Delay(2000);
+			await SendChangesToUI(uIModelObject).ContinueWith(PublishFinished);
 		}
 
 		private void ClearListDbs()
@@ -100,6 +107,13 @@ namespace MesService
 			alarmsDb.Clear();
 			breakersDb.Clear();
 			metersDb.Clear();
+		}
+
+		private void UpdateDbs()
+		{
+			alarmAccess.AddEntity(alarmsDb);
+			breakerAccess.UpdateEntity(breakersDb);
+			electricityMeterAccess.UpdateEntity(metersDb);
 		}
 
 		private string CreateAlarmMessage(int id, bool currentState)
@@ -112,6 +126,26 @@ namespace MesService
 			{
 				return $"Breaker with ID: {id} has been turned off!";
 			}
+		}
+
+		private async Task SendChangesToUI(UIModelObject uiChanges)
+		{
+			using (UIChangesClient client = new UIChangesClient())
+			{
+				client.Open();
+
+				try
+				{
+					await client.ObjectChangeAsync(uiChanges);
+				}
+				catch
+				{
+				}
+			}
+		}
+
+		private void PublishFinished(Task obj)
+		{
 		}
 	}
 }

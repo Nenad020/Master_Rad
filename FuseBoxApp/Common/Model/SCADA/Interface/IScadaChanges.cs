@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Common.Communication.Model.SCADA.Interface
+namespace Common.Model.SCADA.Interface
 {
 	public interface IScadaChanges<T>
 	{

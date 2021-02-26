@@ -1,5 +1,5 @@
 ﻿using Common.Communication.Contract.MES;
-using Common.Communication.Model.MES;
+using Common.Model.MES;
 using System.ServiceModel;
 
 namespace Common.Communication.Client.MES

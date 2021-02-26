@@ -1,4 +1,4 @@
-﻿namespace Common.Communication.Model.MES.Interface
+﻿namespace Common.Model.MES.Interface
 {
 	public interface IMesInit<T>
 	{

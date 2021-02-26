@@ -58,7 +58,7 @@
 									</Grid.RowDefinitions>
 
 									<!-- Title Bar -->
-									<Grid Grid.Column="0" Panel.ZIndex="1" Background="Red">
+									<Grid Grid.Column="0" Panel.ZIndex="1" Background="{StaticResource BackgroundLightBrush}">
 
 										<Grid.ColumnDefinitions>
 											<!-- Icon -->

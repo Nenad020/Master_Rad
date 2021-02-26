@@ -1,5 +1,4 @@
 ﻿using FuseBoxUI.ViewModel.Base;
-using System.Threading;
 
 namespace FuseBoxUI.ViewModel.Elements
 {

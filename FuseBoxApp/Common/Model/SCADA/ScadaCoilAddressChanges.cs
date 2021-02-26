@@ -1,11 +1,11 @@
-﻿namespace Common.Communication.Model.SCADA
-{
-	using Common.Communication.Model.SCADA.Interface;
-	using System;
-	using System.Collections.Generic;
-	using System.Runtime.Serialization;
-	using System.Text;
+﻿using Common.Model.SCADA.Interface;
+using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.Text;
 
+namespace Common.Model.SCADA
+{
 	[DataContract]
 	public class ScadaCoilAddressChanges : IScadaChanges<bool>
 	{
@@ -14,6 +14,8 @@
 
 		[DataMember]
 		public int Meter { get; set; }
+
+		private int oldMeter;
 
 		public ScadaCoilAddressChanges()
 		{
@@ -63,9 +65,22 @@
 			return this.Values.Count > 0;
 		}
 
+		public bool MeterChange()
+		{
+			if (oldMeter == Meter)
+			{
+				return false;
+			}
+			else
+			{
+				oldMeter = Meter;
+				return true;
+			}
+		}
+
 		public void MeterAdd(int value)
 		{
-			Meter += value;
+			Meter = value;
 		}
 	}
 }

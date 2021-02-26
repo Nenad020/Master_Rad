@@ -37,7 +37,7 @@
                                         Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
                                         CornerRadius="{Binding ActualHeight, RelativeSource={RelativeSource Self}}">
 										<!-- Profile picture initials -->
-										<Image Source="/Images/Alarm/alert.png"
+										<Image Source="{Binding ImagePath}"
                                                VerticalAlignment="Center"
                                                HorizontalAlignment="Center"
                                                />

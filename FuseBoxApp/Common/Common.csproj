@@ -66,15 +66,18 @@
     <Compile Include="Communication\Client\MES\MesCommandClient.cs" />
     <Compile Include="Communication\Client\MES\MesToScadaInitClient.cs" />
     <Compile Include="Communication\Client\SCADA\ScadaCommandClient.cs" />
+    <Compile Include="Communication\Client\UI\UIChangesClient.cs" />
+    <Compile Include="Communication\Contract\AsyncFakes\IUIChangesPretender.cs" />
     <Compile Include="Communication\Contract\AsyncFakes\IMesChangesPretender.cs" />
     <Compile Include="Communication\Contract\MES\IMESChanges.cs" />
     <Compile Include="Communication\Contract\MES\IMESCommand.cs" />
     <Compile Include="Communication\Contract\MES\IMesInitValue.cs" />
     <Compile Include="Communication\Contract\SCADA\ICommand.cs" />
-    <Compile Include="Communication\Model\MES\Interface\IMesInit.cs" />
-    <Compile Include="Communication\Model\MES\MesMeterInit.cs" />
-    <Compile Include="Communication\Model\MES\MesBreakerInit.cs" />
-    <Compile Include="Communication\Model\SCADA\ScadaCoilAddressChanges.cs" />
+    <Compile Include="Communication\Contract\UI\IUIChanges.cs" />
+    <Compile Include="Model\MES\Interface\IMesInit.cs" />
+    <Compile Include="Model\MES\MesMeterInit.cs" />
+    <Compile Include="Model\MES\MesBreakerInit.cs" />
+    <Compile Include="Model\SCADA\ScadaCoilAddressChanges.cs" />
     <Compile Include="Communication\WCFRequestsQueue.cs" />
     <Compile Include="Exceptions\MES\NoElecticityMeterMesAvailableException.cs" />
     <Compile Include="Exceptions\MES\NoBreakerMesAvailableException.cs" />
@@ -85,7 +88,11 @@
     <Compile Include="Exceptions\SCADA\NoUsedHoldingRegistersAddressesAvailableException.cs" />
     <Compile Include="Exceptions\SCADA\NoUsedCoilsAddressesAvailableException.cs" />
     <Compile Include="Communication\Access\SCADA\IScadaDbAccess.cs" />
-    <Compile Include="Communication\Model\SCADA\Interface\IScadaChanges.cs" />
+    <Compile Include="Model\SCADA\Interface\IScadaChanges.cs" />
+    <Compile Include="Model\UI\UIAlarm.cs" />
+    <Compile Include="Model\UI\UIBreaker.cs" />
+    <Compile Include="Model\UI\UIElectricityMeter.cs" />
+    <Compile Include="Model\UI\UIModelObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

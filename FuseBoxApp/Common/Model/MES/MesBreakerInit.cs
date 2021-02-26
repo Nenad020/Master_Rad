@@ -1,8 +1,8 @@
-﻿using Common.Communication.Model.MES.Interface;
+﻿using Common.Model.MES.Interface;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace Common.Communication.Model.MES
+namespace Common.Model.MES
 {
 	[DataContract]
 	public class MesBreakerInit : IMesInit<bool>

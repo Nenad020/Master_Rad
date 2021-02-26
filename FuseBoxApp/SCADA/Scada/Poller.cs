@@ -1,9 +1,6 @@
-﻿using Common.Communication.Model.SCADA;
-using Common.Communication.Access.SCADA;
-using Common.Communication.Model.SCADA.Interface;
+﻿using Common.Model.SCADA;
 using EasyModbus;
 using Scada.Extensions;
-using ScadaDbAccess.Model;
 using ScadaService;
 using System;
 using System.Collections;
@@ -13,7 +10,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using Common.Communication.Client.MES;
-using Common.Communication.Model.MES;
+using Common.Model.MES;
 using System.ServiceModel;
 using Common.Exceptions.MES;
 using System.Threading.Tasks;
@@ -139,7 +136,7 @@ namespace Scada
 			pollingData.Update(idsToPoll, addressesToPoll, mdbPollCount);
 
 			WriteCoilAddressValuesOnSimulator();
-			WriteHoldingRegisterAddressValuesOnSimulator();
+			//WriteHoldingRegisterAddressValuesOnSimulator();
 
 			Console.WriteLine("Polling addresses updated.");
 			if (stopped)
@@ -209,7 +206,7 @@ namespace Scada
 						continue;
 					}
 
-					UpdateHoldingRegistersAddress(response);
+					//UpdateHoldingRegistersAddress(response);
 					PollReplyReceived(response);
 					Thread.Sleep(delayInMilliseconds);
 				}
@@ -250,7 +247,6 @@ namespace Scada
 
 			scadaCoilAddressChanges.Update(difference.Ids, difference.Values);
 
-			//TODO: OBAVESTITI OE O PROMENAMA
 			PublishChanges().ContinueWith(PublishFinished);
 
 			Console.WriteLine(scadaCoilAddressChanges.Any() ? $"Polled changes:\n{scadaCoilAddressChanges}" : "No changes...");
@@ -389,7 +385,7 @@ namespace Scada
 
 		private async Task PublishChanges()
 		{
-			if (!scadaCoilAddressChanges.Any())
+			if (!scadaCoilAddressChanges.Any()) //&& !scadaCoilAddressChanges.MeterChange())
 			{
 				return;
 			}

@@ -28,7 +28,7 @@ namespace Scada
 			scadaModel = new ScadaModel(coilAddressesAccess, holdingRegistersAddressAccess);
 			scadaModel.Initialize();
 
-			poller = new Poller(scadaModel, 1000);
+			poller = new Poller(scadaModel, 3000);
 			scadaModel.UsedAddressesUpdated += (sender, args) => poller.UpdateAddressesToPoll();
 
 			commandService = new CommandServiceHost(scadaModel);

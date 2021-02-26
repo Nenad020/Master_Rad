@@ -1,5 +1,5 @@
 ﻿using Common.Communication.Contract.MES;
-using Common.Communication.Model.SCADA;
+using Common.Model.SCADA;
 using System.ServiceModel;
 using System.Threading.Tasks;
 

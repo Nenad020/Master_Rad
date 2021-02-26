@@ -1,5 +1,5 @@
 ﻿using Common.Communication.Contract.AsyncFakes;
-using Common.Communication.Model.SCADA;
+using Common.Model.SCADA;
 using System.ServiceModel;
 using System.Threading.Tasks;
 

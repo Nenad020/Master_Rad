@@ -1,11 +1,7 @@
 ﻿using Common.Communication.Access.MES;
-using MesDbAccess.Access;
 using MesDbAccess.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MesService.Model
 {
@@ -98,10 +94,12 @@ namespace MesService.Model
 			AlarmMe currentAlarm;
 			if (!Alarms.TryGetValue(alarm.BreakerId, out currentAlarm))
 			{
-				throw new ArgumentException($"Alarm with breaker id {alarm.BreakerId} doesn't exist in the model.");
+				Alarms.Add(alarm.BreakerId, alarm);
 			}
-
-			Alarms[alarm.Id] = alarm;
+			else
+			{
+				Alarms[alarm.Id] = alarm;
+			}
 		}
 
 		public void UpdateBreaker(BreakerMe breaker)

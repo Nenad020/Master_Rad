@@ -1,4 +1,4 @@
-﻿using Common.Communication.Model.SCADA;
+﻿using Common.Model.SCADA;
 using System.ServiceModel;
 
 namespace Common.Communication.Contract.MES

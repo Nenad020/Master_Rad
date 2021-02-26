@@ -1,25 +1,57 @@
-﻿using FuseBoxUI.ViewModel.Base;
-using System;
+﻿using Common.Model.UI;
+using FuseBoxUI.Events;
+using FuseBoxUI.ViewModel.Base;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace FuseBoxUI.ViewModel.Alarm
 {
-    public class AlarmListItemViewModel : BaseViewModel
+	public class AlarmListItemViewModel : BaseViewModel
     {
-        public List<AlarmItemViewModel> Items { get; set; }
+        public ObservableCollection<AlarmItemViewModel> Items { get; set; }
 
         public AlarmListItemViewModel()
         {
-            Items = new List<AlarmItemViewModel>();
+            Items = new ObservableCollection<AlarmItemViewModel>();
 
-            for (int i = 1; i <= 20; i++)
-            {
-                Items.Add(new AlarmItemViewModel
-                {
-                    Message = $"Breaker with ID: {i} has been turned off!",
-                    Date = DateTime.Now.ToString()
-                });
+            ProcessBusinessLogic.AlarmEvent += AlarmUpdate;
+        }
+
+		private void AlarmUpdate(List<UIAlarm> alarms)
+        {
+   			foreach (var alarm in alarms)
+			{
+                var item = Items.FirstOrDefault(a => a.BreakerID == alarm.BreakerId);
+                if (item == null)
+				{
+                    Items.Add(new AlarmItemViewModel
+                    {
+                        BreakerID = alarm.BreakerId,
+                        Date = alarm.Timestamp.ToString(),
+                        Message = alarm.Message,
+                        ImagePath = GetImagePath(alarm.State)
+                    });
+				}
+                else
+				{
+                    item.Date = alarm.Timestamp.ToString();
+                    item.Message = alarm.Message;
+                    item.ImagePath = GetImagePath(alarm.State);
+                }
             }
         }
+
+        private string GetImagePath(bool state)
+		{
+            if (state)
+			{
+                return "/Images/Alarm/GreenAlert.png";
+            }
+            else
+			{
+                return "/Images/Alarm/alert.png";
+            }
+		}
     }
 }

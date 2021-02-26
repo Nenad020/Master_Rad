@@ -7,9 +7,13 @@ namespace FuseBoxUI.ViewModel.Alarm
 {
     public class AlarmItemViewModel : BaseViewModel
     {
+        public int BreakerID { get; set; }
+
         public string Message { get; set; }
 
         public string Date { get; set; }
+
+        public string ImagePath { get; set; }
 
         public ICommand ShowDetailsCommand { get; set; }
 
@@ -25,7 +29,8 @@ namespace FuseBoxUI.ViewModel.Alarm
                 Title = "ALERT!",
                 Message = Message,
                 Date = Date,
-                OkText = "OK"
+                OkText = "OK",
+                ImagePath = ImagePath
             });
         }
     }
