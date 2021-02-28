@@ -32,7 +32,8 @@ namespace FuseBoxUI.ViewModel.StartUp
 				{
                     var breaker = new BreakerViewModel()
                     {
-                        BreakerName = mesBreaker.Name
+                        BreakerName = mesBreaker.Name,
+                        Id = mesBreaker.Id
 					};
 
                     UpdateBreakerViewPosition(breaker, mesBreaker.CurrentState);
@@ -72,8 +73,8 @@ namespace FuseBoxUI.ViewModel.StartUp
 
         private void UpdateBreakerViewPosition(BreakerViewModel breaker, bool state)
 		{
-            breaker.FillBackground = BreakerViewHelper.GetBrushColor(state);
-            breaker.TogglePositions = BreakerViewHelper.GetTogglePositon(state);
+            breaker.FillBackground = BreakerHelper.GetBrushColor(state);
+            breaker.TogglePositions = BreakerHelper.GetTogglePositon(state);
             breaker.ToggleButton = state;		
         }
 

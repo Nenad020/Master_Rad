@@ -21,6 +21,8 @@ namespace Mes
 
 		private static MesModelReaderServiceHost mesModelReaderServiceHost;
 
+		private static MesCommandServiceHost mesCommandServiceHost;
+
 		private static MesModel mesModel;
 
 		static void Main(string[] args)
@@ -43,6 +45,9 @@ namespace Mes
 			mesModelReaderServiceHost = new MesModelReaderServiceHost(mesModel);
 			mesModelReaderServiceHost.Open();
 
+			mesCommandServiceHost = new MesCommandServiceHost();
+			mesCommandServiceHost.Open();
+
 			Console.ReadLine();
 			GracefulShutdown();
 		}
@@ -62,6 +67,7 @@ namespace Mes
 			mesToScadaInitServiceHost?.Close();
 			mesChangesServiceHost?.Close();
 			mesModelReaderServiceHost?.Close();
+			mesCommandServiceHost?.Close();
 		}
 	}
 }

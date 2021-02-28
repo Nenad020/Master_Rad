@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MesChanges.cs" />
+    <Compile Include="MesCommand.cs" />
     <Compile Include="MesModelReader.cs" />
     <Compile Include="MesToScadaInit.cs" />
     <Compile Include="Model\MesModel.cs" />

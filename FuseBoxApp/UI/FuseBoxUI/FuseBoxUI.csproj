@@ -147,7 +147,7 @@
     <Compile Include="DI\UIManager.cs" />
     <Compile Include="Events\ProcessBusinessLogic.cs" />
     <Compile Include="Expressions\ExpressionHelpers.cs" />
-    <Compile Include="Helpers\BreakerViewHelper.cs" />
+    <Compile Include="Helpers\BreakerHelper.cs" />
     <Compile Include="ServiceHosts\UIChanges.cs" />
     <Compile Include="ServiceHosts\Hosts\UIChangesServiceHost.cs" />
     <Compile Include="ValueConverter\MarginElementConverter.cs" />

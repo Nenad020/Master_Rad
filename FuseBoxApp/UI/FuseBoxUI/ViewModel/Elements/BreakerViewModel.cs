@@ -1,4 +1,5 @@
-﻿using FuseBoxUI.Helpers;
+﻿using Common.Communication.Client.MES;
+using FuseBoxUI.Helpers;
 using FuseBoxUI.ViewModel.Base;
 using System.Windows.Input;
 
@@ -12,7 +13,9 @@ namespace FuseBoxUI.ViewModel.Elements
 
 		public string BreakerName { get; set; }
 
-		public bool ToggleButton = true;
+		public bool ToggleButton { get; set; }
+
+		public int Id { get; set; }
 
 		public ICommand ChangeValueCommand { get; set; }
 
@@ -25,19 +28,40 @@ namespace FuseBoxUI.ViewModel.Elements
 		{
 			if (!ToggleButton)
 			{
-				FillBackground = BreakerViewHelper.GetBrushColor(true);
-				TogglePositions = BreakerViewHelper.GetTogglePositon(true);
+				FillBackground = BreakerHelper.GetBrushColor(true);
+				TogglePositions = BreakerHelper.GetTogglePositon(true);
 				ToggleButton = true;
 
-				//TODO: Obavestiti SCADU
+				BreakerCommand(true);
 			}
 			else
 			{
-				FillBackground = BreakerViewHelper.GetBrushColor(false);
-				TogglePositions = BreakerViewHelper.GetTogglePositon(false);
+				FillBackground = BreakerHelper.GetBrushColor(false);
+				TogglePositions = BreakerHelper.GetTogglePositon(false);
 				ToggleButton = false;
 
-				//TODO: Obavestiti SCADU
+				BreakerCommand(false);
+			}
+		}
+
+		private void BreakerCommand(bool state)
+		{
+			using (MesCommandClient client = new MesCommandClient())
+			{
+				try
+				{
+					if (state)
+					{
+						client.Close(Id);
+					}
+					else
+					{
+						client.Open(Id);
+					}
+				}
+				catch
+				{
+				}
 			}
 		}
 	}

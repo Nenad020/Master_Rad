@@ -1,6 +1,6 @@
 ﻿namespace FuseBoxUI.Helpers
 {
-	public static class BreakerViewHelper
+	public static class BreakerHelper
 	{
 		public static double[] GetTogglePositon(bool status)
 		{
