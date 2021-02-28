@@ -6,67 +6,25 @@
       xmlns:local="clr-namespace:FuseBoxUI.View.Pages"
       xmlns:viewModel="clr-namespace:FuseBoxUI.ViewModel.StartUp"
       xmlns:controls="clr-namespace:FuseBoxUI.View.Controls"
+	  xmlns:designModel="clr-namespace:FuseBoxUI.ViewModel.StartUp.Design"
       mc:Ignorable="d"
       d:DesignHeight="1010" d:DesignWidth="1680"
       Title="StartUpPage">
 
-	<Canvas>
-		<Border Canvas.Left="25" Canvas.Top="25" Background="{StaticResource ForegroundMainBrush}" CornerRadius="8" Height="350" Width="600">
-			<controls:ElectricityBoxControl Height="350" Width="500" />
-		</Border>
-
-		<Border Canvas.Bottom="75" Canvas.Right="25" Background="{StaticResource ForegroundMainBrush}" CornerRadius="8" Height="350">
-			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-				</Grid.ColumnDefinitions>
-
-				<controls:BreakerControl Height="300" Width="120" />
-				<controls:BreakerControl Height="300" Width="120" Grid.Column="1"/>
-				<controls:BreakerControl Height="300" Width="120" Grid.Column="2"/>
-				<controls:BreakerControl Height="300" Width="120" Grid.Column="3"/>
-				<controls:BreakerControl Height="300" Width="120" Grid.Column="4"/>
-			</Grid>
-		</Border>
-
-		<Border Canvas.Top="25" Canvas.Right="25" Background="{StaticResource ForegroundMainBrush}" CornerRadius="8" Height="350">
-			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-				</Grid.ColumnDefinitions>
-
-				<controls:BreakerControl Height="300" Width="120" />
-				<controls:BreakerControl Height="300" Width="120" Grid.Column="1"/>
-				<controls:BreakerControl Height="300" Width="120" Grid.Column="2"/>
-				<controls:BreakerControl Height="300" Width="120" Grid.Column="3"/>
-				<controls:BreakerControl Height="300" Width="120" Grid.Column="4"/>
-			</Grid>
-		</Border>
-
-		<Border Canvas.Bottom="75" Canvas.Left="25" Background="{StaticResource ForegroundMainBrush}" CornerRadius="8" Height="350">
-			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-				</Grid.ColumnDefinitions>
-
-				<controls:BreakerControl Height="300" Width="120" />
-				<controls:BreakerControl Height="300" Width="120" Grid.Column="1"/>
-				<controls:BreakerControl Height="300" Width="120" Grid.Column="2"/>
-				<controls:BreakerControl Height="300" Width="120" Grid.Column="3"/>
-				<controls:BreakerControl Height="300" Width="120" Grid.Column="4"/>
-			</Grid>
-		</Border>
-	</Canvas>
+	<Grid>
+		<ScrollViewer VerticalScrollBarVisibility="Auto">
+			<ItemsControl ItemsSource="{Binding Breakers}">
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<WrapPanel />
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<controls:BreakerControl Height="325" Margin="50 50 0 100"/>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</ScrollViewer>
+	</Grid>
 </local:BasePage>

@@ -147,6 +147,7 @@
     <Compile Include="DI\UIManager.cs" />
     <Compile Include="Events\ProcessBusinessLogic.cs" />
     <Compile Include="Expressions\ExpressionHelpers.cs" />
+    <Compile Include="Helpers\BreakerViewHelper.cs" />
     <Compile Include="ServiceHosts\UIChanges.cs" />
     <Compile Include="ServiceHosts\Hosts\UIChangesServiceHost.cs" />
     <Compile Include="ValueConverter\MarginElementConverter.cs" />
@@ -163,6 +164,7 @@
     <Compile Include="ViewModel\Elements\BreakerViewModel.cs" />
     <Compile Include="ViewModel\Elements\ElectricityBoxViewModel.cs" />
     <Compile Include="ViewModel\Report\ReportViewModel.cs" />
+    <Compile Include="ViewModel\StartUp\Design\StartUpDesignModel.cs" />
     <Compile Include="ViewModel\StartUp\StartUpViewModel.cs" />
     <Compile Include="ViewModel\Application\ViewModelLocator.cs" />
     <Compile Include="View\Controls\AlarmItemControl.xaml.cs">

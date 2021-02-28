@@ -1,12 +1,7 @@
 ﻿using Common.Communication.Contract.UI;
 using Common.Model.UI;
-using FuseBoxUI.Events;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
+using static FuseBoxUI.DI.DI;
 
 namespace FuseBoxUI.ServiceHosts
 {
@@ -19,7 +14,15 @@ namespace FuseBoxUI.ServiceHosts
 
 		public void ObjectChange(UIModelObject uIModelObject)
 		{
-			ProcessBusinessLogic.OnAlarmUpdate(uIModelObject.UIAlarms);
+			if (uIModelObject.UIAlarms.Count > 0)
+			{
+				ViewModelApplication.OnAlarmUpdate(uIModelObject.UIAlarms);
+			}
+
+			if (uIModelObject.UIBreakers.Count > 0)
+			{
+				ViewModelApplication.OnBreakerUpdate(uIModelObject.UIBreakers);
+			}
 		}
 	}
 }

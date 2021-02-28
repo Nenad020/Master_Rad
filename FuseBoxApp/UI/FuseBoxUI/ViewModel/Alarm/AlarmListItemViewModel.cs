@@ -1,9 +1,9 @@
 ﻿using Common.Model.UI;
-using FuseBoxUI.Events;
 using FuseBoxUI.ViewModel.Base;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using static FuseBoxUI.DI.DI;
 
 namespace FuseBoxUI.ViewModel.Alarm
 {
@@ -15,7 +15,7 @@ namespace FuseBoxUI.ViewModel.Alarm
         {
             Items = new ObservableCollection<AlarmItemViewModel>();
 
-            ProcessBusinessLogic.AlarmEvent += AlarmUpdate;
+            ViewModelApplication.AlarmUpdateEvent += AlarmUpdate;
         }
 
 		private void AlarmUpdate(List<UIAlarm> alarms)

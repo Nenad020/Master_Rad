@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace FuseBoxUI.Events
 {
-	public delegate void AlarmDelegate(List<UIAlarm> alarms);
+	/*public delegate void AlarmDelegate(List<UIAlarm> alarms);
 
     public class ProcessBusinessLogic
     {
@@ -13,5 +13,5 @@ namespace FuseBoxUI.Events
         {
             AlarmEvent?.Invoke(alarms);
         }
-    }
+    }*/
 }

@@ -1,5 +1,4 @@
-﻿using FuseBoxUI.ViewModel.Elements;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace FuseBoxUI.View.Controls
 {
@@ -12,7 +11,7 @@ namespace FuseBoxUI.View.Controls
 		{
 			InitializeComponent();
 
-			DataContext = new BreakerViewModel();
+			//DataContext = new BreakerViewModel();
 		}
 	}
 }

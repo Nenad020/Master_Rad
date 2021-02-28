@@ -1,25 +1,18 @@
-﻿using FuseBoxUI.ViewModel.Base;
+﻿using FuseBoxUI.Helpers;
+using FuseBoxUI.ViewModel.Base;
 using System.Windows.Input;
 
 namespace FuseBoxUI.ViewModel.Elements
 {
 	public class BreakerViewModel : BaseViewModel
 	{
-		public string FillBackground { get; set; } = "ff4747";
+		public string FillBackground { get; set; }
 
-		public double[] TogglePositions { get; set; } = new double[] { 0, 35, 0, 0 };
+		public double[] TogglePositions { get; set; }
 
-		public string BreakerName { get; set; } = "Videcemo jos sta cemo raditi";
+		public string BreakerName { get; set; }
 
-		private string brushOff = "ff4747";
-
-		private string brushOn = "00c541";
-
-		private double[] toggleOff = new double[] { 0, 35, 0, 0 };
-
-		private double[] toggleOn = new double[] { 0, 0, 0, 35 };
-
-		private bool toggleButton = false;
+		public bool ToggleButton = true;
 
 		public ICommand ChangeValueCommand { get; set; }
 
@@ -30,23 +23,21 @@ namespace FuseBoxUI.ViewModel.Elements
 
 		private void ToggleChangedValue()
 		{
-			if (!toggleButton)
+			if (!ToggleButton)
 			{
-				FillBackground = brushOn;
-				TogglePositions = toggleOn;
+				FillBackground = BreakerViewHelper.GetBrushColor(true);
+				TogglePositions = BreakerViewHelper.GetTogglePositon(true);
+				ToggleButton = true;
 
 				//TODO: Obavestiti SCADU
-
-				toggleButton = true;
 			}
 			else
 			{
-				FillBackground = brushOff;
-				TogglePositions = toggleOff;
+				FillBackground = BreakerViewHelper.GetBrushColor(false);
+				TogglePositions = BreakerViewHelper.GetTogglePositon(false);
+				ToggleButton = false;
 
 				//TODO: Obavestiti SCADU
-
-				toggleButton = false;
 			}
 		}
 	}
