@@ -7,6 +7,7 @@ using static FuseBoxUI.DI.DI;
 using System.Collections.Generic;
 using Common.Model.UI;
 using System;
+using Common.Communication.Client.MES;
 
 namespace FuseBoxUI.ViewModel.StartUp
 {
@@ -24,23 +25,29 @@ namespace FuseBoxUI.ViewModel.StartUp
         {
             Breakers = new ObservableCollection<BreakerViewModel>();
 
-            for (int i = 1; i <= 18; i++)
-            {
-                Breakers.Add(new BreakerViewModel()
-                {
-                    BreakerName = $"Breaker_{i}",
-                    FillBackground = BreakerViewHelper.GetBrushColor(false),
-                    TogglePositions = BreakerViewHelper.GetTogglePositon(false),
-                    ToggleButton = false
-                });
-            }
+            var mesBreakers = GetInitBreakers();
+            if (mesBreakers != null)
+			{
+				foreach (var mesBreaker in mesBreakers.UIBreakers)
+				{
+                    var breaker = new BreakerViewModel()
+                    {
+                        BreakerName = mesBreaker.Name
+					};
+
+                    UpdateBreakerViewPosition(breaker, mesBreaker.CurrentState);
+                    Breakers.Add(breaker);
+                }
+			}
 
             ViewModelApplication.BreakerUpdateEvent += BreakerUpdate;
         }
 
-        #endregion
+		#endregion
 
-        private void BreakerUpdate(List<UIBreaker> breakers)
+		#region Methods
+
+		private void BreakerUpdate(List<UIBreaker> breakers)
 		{
             foreach (var breaker in breakers)
             {
@@ -69,5 +76,25 @@ namespace FuseBoxUI.ViewModel.StartUp
             breaker.TogglePositions = BreakerViewHelper.GetTogglePositon(state);
             breaker.ToggleButton = state;		
         }
+
+        private UIModelObject GetInitBreakers()
+		{
+            using (MESModelReaderClient client = new MESModelReaderClient())
+            {
+                client.Open();
+
+                try
+                {
+                    return client.GetBreakers();
+                }
+                catch
+                {
+                }
+            }
+
+            return null;
+        }
+
+		#endregion
 	}
 }

@@ -17,8 +17,8 @@ namespace MesService
 		public MesToScadaInit(MesModel mesModel)
 		{
 			this.mesModel = mesModel;
-			this.mesBreakerInit = new MesBreakerInit();
-			this.mesMeterInit = new MesMeterInit();
+			mesBreakerInit = new MesBreakerInit();
+			mesMeterInit = new MesMeterInit();
 		}
 
 		public MesBreakerInit GetBreakers()

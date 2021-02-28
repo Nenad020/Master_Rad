@@ -130,6 +130,11 @@ namespace MesService
 
 		private async Task SendChangesToUI(UIModelObject uiChanges)
 		{
+			if (uiChanges.UIAlarms.Count == 0 && uiChanges.UIBreakers.Count == 0 && uiChanges.UIElectricityMeters.Count == 0)
+			{
+				return;
+			}
+
 			using (UIChangesClient client = new UIChangesClient())
 			{
 				client.Open();

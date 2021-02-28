@@ -1,7 +1,11 @@
 ﻿using Common.Communication.Access.MES;
+using Common.Communication.Client.UI;
+using Common.Model.UI;
 using MesDbAccess.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace MesService.Model
 {
@@ -122,6 +126,11 @@ namespace MesService.Model
 			}
 
 			ElecticityMeters[1].Value = value;
+		}
+
+		public List<BreakerMe> GetBreakers()
+		{
+			return Breakers.Values.ToList();
 		}
 	}
 }
