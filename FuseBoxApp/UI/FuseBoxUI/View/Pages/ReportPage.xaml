@@ -10,9 +10,6 @@
       Title="ReportPage">
 
 	<Grid>
-		<Button Content="This is report page" 
-				Command="{Binding ButtonCommand}"
-				CommandParameter="{Binding ElementName=Page}" 
-				HorizontalAlignment="Center" />
+		<TextBlock Text="TODO" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="30" FontWeight="Bold"/>
 	</Grid>
 </local:BasePage>
