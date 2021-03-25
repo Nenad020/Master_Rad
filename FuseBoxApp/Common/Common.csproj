@@ -79,6 +79,7 @@
     <Compile Include="Model\MES\Interface\IMesInit.cs" />
     <Compile Include="Model\MES\MesMeterInit.cs" />
     <Compile Include="Model\MES\MesBreakerInit.cs" />
+    <Compile Include="Model\Report\AlarmHistoryReport.cs" />
     <Compile Include="Model\SCADA\ScadaCoilAddressChanges.cs" />
     <Compile Include="Communication\WCFRequestsQueue.cs" />
     <Compile Include="Exceptions\MES\NoElecticityMeterMesAvailableException.cs" />
