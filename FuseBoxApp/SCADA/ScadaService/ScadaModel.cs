@@ -1,6 +1,6 @@
 ﻿namespace ScadaService
 {
-	using Common.Communication.Access.SCADA;
+	using ScadaDbAccess.Access.Interfaces;
 	using ScadaDbAccess.Model;
 	using System;
 	using System.Collections.Generic;

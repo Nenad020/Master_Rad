@@ -53,6 +53,11 @@
     <Compile Include="Access\ElectricityMeterAccess.cs" />
     <Compile Include="Access\BreakerAccess.cs" />
     <Compile Include="Access\AlarmAccess.cs" />
+    <Compile Include="Access\Interfaces\IMesDbAccess.cs" />
+    <Compile Include="Access\Interfaces\IMesDbProceduresAccess.cs" />
+    <Compile Include="Model\AlarmHistoryFromTo_Result.cs">
+      <DependentUpon>MesDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\AlarmMe.cs">
       <DependentUpon>MesDbModel.tt</DependentUpon>
     </Compile>

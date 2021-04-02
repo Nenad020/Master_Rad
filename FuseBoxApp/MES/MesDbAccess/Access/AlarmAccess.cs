@@ -1,4 +1,4 @@
-﻿using Common.Communication.Access.MES;
+﻿using MesDbAccess.Access.Interfaces;
 using Common.Exceptions.MES;
 using MesDbAccess.Model;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace MesDbAccess.Access
 {
-	public class AlarmAccess : IMesDbAccess<AlarmMe>
+	public class AlarmAccess : IMesDbAccess<AlarmMe>, IMesDbProceduresAccess
 	{
 		public AlarmAccess()
 		{
@@ -29,6 +29,21 @@ namespace MesDbAccess.Access
 				catch
 				{
 					throw new InvalidOperationException("Failed to add alarm entities in MES database!");
+				}
+			}
+		}
+
+		public List<AlarmHistoryFromTo_Result> GetAlarmHistory(DateTime from, DateTime to)
+		{
+			using (var db = new MesDbEntities())
+			{
+				try
+				{
+					return db.AlarmHistoryFromTo(from, to).ToList();
+				}
+				catch
+				{
+					throw new NoAlarmMesAvailableException("No alarms in MES database");
 				}
 			}
 		}

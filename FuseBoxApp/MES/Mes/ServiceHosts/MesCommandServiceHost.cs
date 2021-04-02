@@ -21,7 +21,7 @@ namespace Mes.ServiceHosts
         public void Open()
         {
             host.Open();
-            Console.WriteLine("MES command Service Started...");
+            Console.WriteLine("MES Command Service Started...");
             Console.WriteLine("Endpoints:");
 
             foreach (Uri uri in host.BaseAddresses)
@@ -35,7 +35,7 @@ namespace Mes.ServiceHosts
         public void Close()
         {
             host.Close();
-            Console.WriteLine("MES command Service Stopped...");
+            Console.WriteLine("MES Command Service Stopped...");
         }
     }
 }

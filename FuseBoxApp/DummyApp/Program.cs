@@ -1,5 +1,4 @@
 ﻿using Common.Communication.Client.SCADA;
-using Common.Communication.Access.SCADA;
 using ScadaDbAccess.Access;
 using ScadaDbAccess.Model;
 using System;
@@ -26,11 +25,29 @@ namespace DummyApp
 
 			access.AddEntity(entities);*/
 
-			using (MesToScadaInitClient client = new MesToScadaInitClient())
+			using (ReportsClient client = new ReportsClient())
 			{
 				try
 				{
-					var result = client.GetBreakers();
+					DateTime from = new DateTime(2021, 3, 5, 13, 35, 0);
+					DateTime to = new DateTime(2021, 3, 5, 13, 36, 30);
+
+					var result = client.AlarmHistory(from, to);
+
+					foreach (var item in result.Headers)
+					{
+						Console.Write($"{item} \t\t");
+					}
+					Console.WriteLine();
+
+					foreach (var item in result.Rows.Values)
+					{
+						foreach (var item2 in item)
+						{
+							Console.Write($"{item2} \t\t");
+						}
+						Console.WriteLine();
+					}
 				}
 				catch
 				{

@@ -61,11 +61,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Communication\Access\MES\IMesDbAccess.cs" />
     <Compile Include="Communication\Client\MES\MesChangesClient.cs" />
     <Compile Include="Communication\Client\MES\MesCommandClient.cs" />
     <Compile Include="Communication\Client\MES\MESModelReaderClient.cs" />
     <Compile Include="Communication\Client\MES\MesToScadaInitClient.cs" />
+    <Compile Include="Communication\Client\MES\ReportsClient.cs" />
     <Compile Include="Communication\Client\SCADA\ScadaCommandClient.cs" />
     <Compile Include="Communication\Client\UI\UIChangesClient.cs" />
     <Compile Include="Communication\Contract\AsyncFakes\IUIChangesPretender.cs" />
@@ -74,12 +74,13 @@
     <Compile Include="Communication\Contract\MES\IMESCommand.cs" />
     <Compile Include="Communication\Contract\MES\IMesInitValue.cs" />
     <Compile Include="Communication\Contract\MES\IMESModelReader.cs" />
+    <Compile Include="Communication\Contract\MES\IReports.cs" />
     <Compile Include="Communication\Contract\SCADA\ICommand.cs" />
     <Compile Include="Communication\Contract\UI\IUIChanges.cs" />
     <Compile Include="Model\MES\Interface\IMesInit.cs" />
     <Compile Include="Model\MES\MesMeterInit.cs" />
     <Compile Include="Model\MES\MesBreakerInit.cs" />
-    <Compile Include="Model\Report\AlarmHistoryReport.cs" />
+    <Compile Include="Model\Report\ReportModel.cs" />
     <Compile Include="Model\SCADA\ScadaCoilAddressChanges.cs" />
     <Compile Include="Communication\WCFRequestsQueue.cs" />
     <Compile Include="Exceptions\MES\NoElecticityMeterMesAvailableException.cs" />
@@ -90,7 +91,6 @@
     <Compile Include="Exceptions\SCADA\IdNotExistsFault.cs" />
     <Compile Include="Exceptions\SCADA\NoUsedHoldingRegistersAddressesAvailableException.cs" />
     <Compile Include="Exceptions\SCADA\NoUsedCoilsAddressesAvailableException.cs" />
-    <Compile Include="Communication\Access\SCADA\IScadaDbAccess.cs" />
     <Compile Include="Model\SCADA\Interface\IScadaChanges.cs" />
     <Compile Include="Model\UI\UIAlarm.cs" />
     <Compile Include="Model\UI\UIBreaker.cs" />

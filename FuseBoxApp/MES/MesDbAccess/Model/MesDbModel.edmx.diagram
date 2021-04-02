@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="df5d9f6eedd14f7daabf12068277ae61" Name="Diagram1">
+      <Diagram DiagramId="26e23abfdb814a9b93d57b90e955dc17" Name="Diagram1">
         <EntityTypeShape EntityType="MesDbModel.AlarmMe" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MesDbModel.BreakerMe" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MesDbModel.ElectricityMeterMe" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />

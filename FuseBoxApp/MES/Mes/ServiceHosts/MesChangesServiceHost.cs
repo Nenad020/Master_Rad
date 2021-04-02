@@ -1,4 +1,4 @@
-﻿using Common.Communication.Access.MES;
+﻿using MesDbAccess.Access.Interfaces;
 using Common.Communication.Contract.MES;
 using MesDbAccess.Model;
 using MesService;
@@ -25,7 +25,7 @@ namespace Mes.ServiceHosts
         public void Open()
         {
             host.Open();
-            Console.WriteLine("MES changes Service Started...");
+            Console.WriteLine("MES Changes Service Started...");
             Console.WriteLine("Endpoints:");
 
             foreach (Uri uri in host.BaseAddresses)
@@ -39,7 +39,7 @@ namespace Mes.ServiceHosts
         public void Close()
         {
             host.Close();
-            Console.WriteLine("MES changes Service Stopped...");
+            Console.WriteLine("MES Changes Service Stopped...");
         }
     }
 }

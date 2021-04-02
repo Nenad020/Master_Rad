@@ -1,5 +1,5 @@
 ﻿using Common.Communication;
-using Common.Communication.Access.MES;
+using MesDbAccess.Access.Interfaces;
 using Common.Communication.Client.UI;
 using Common.Communication.Contract.MES;
 using Common.Model.SCADA;

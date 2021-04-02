@@ -1,5 +1,5 @@
 ﻿using Common.Exceptions.SCADA;
-using Common.Communication.Access.SCADA;
+using ScadaDbAccess.Access.Interfaces;
 using ScadaDbAccess.Model;
 using System.Collections.Generic;
 using System.Linq;

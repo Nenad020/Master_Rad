@@ -1,4 +1,4 @@
-﻿using Common.Communication.Access.MES;
+﻿using MesDbAccess.Access.Interfaces;
 using Common.Exceptions.MES;
 using MesDbAccess.Model;
 using System;

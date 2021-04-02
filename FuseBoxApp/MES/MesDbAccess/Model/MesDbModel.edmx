@@ -30,6 +30,10 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Value" Type="bigint" Nullable="false" />
         </EntityType>
+        <Function Name="AlarmHistoryFromTo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="param1" Type="datetime2" Mode="In" />
+          <Parameter Name="param2" Type="datetime2" Mode="In" />
+        </Function>
         <EntityContainer Name="MesDbModelStoreContainer">
           <EntitySet Name="AlarmMes" EntityType="Self.AlarmMes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BreakerMes" EntityType="Self.BreakerMes" Schema="dbo" store:Type="Tables" />
@@ -69,7 +73,17 @@
           <EntitySet Name="AlarmMes" EntityType="Self.AlarmMe" />
           <EntitySet Name="BreakerMes" EntityType="Self.BreakerMe" />
           <EntitySet Name="ElectricityMeterMes" EntityType="Self.ElectricityMeterMe" />
+          <FunctionImport Name="AlarmHistoryFromTo" ReturnType="Collection(MesDbModel.AlarmHistoryFromTo_Result)">
+            <Parameter Name="param1" Mode="In" Type="DateTime" />
+            <Parameter Name="param2" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="AlarmHistoryFromTo_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="BreakerId" Nullable="false" />
+          <Property Type="DateTime" Name="Timestamp" Nullable="false" />
+          <Property Type="String" Name="Message" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -104,6 +118,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AlarmHistoryFromTo" FunctionName="MesDbModel.Store.AlarmHistoryFromTo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MesDbModel.AlarmHistoryFromTo_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BreakerId" ColumnName="BreakerId" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

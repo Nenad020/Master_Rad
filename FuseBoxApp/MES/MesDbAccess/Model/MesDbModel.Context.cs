@@ -12,6 +12,8 @@ namespace MesDbAccess.Model
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class MesDbEntities : DbContext
     {
@@ -28,5 +30,18 @@ namespace MesDbAccess.Model
         public virtual DbSet<AlarmMe> AlarmMes { get; set; }
         public virtual DbSet<BreakerMe> BreakerMes { get; set; }
         public virtual DbSet<ElectricityMeterMe> ElectricityMeterMes { get; set; }
+    
+        public virtual ObjectResult<AlarmHistoryFromTo_Result> AlarmHistoryFromTo(Nullable<System.DateTime> param1, Nullable<System.DateTime> param2)
+        {
+            var param1Parameter = param1.HasValue ?
+                new ObjectParameter("param1", param1) :
+                new ObjectParameter("param1", typeof(System.DateTime));
+    
+            var param2Parameter = param2.HasValue ?
+                new ObjectParameter("param2", param2) :
+                new ObjectParameter("param2", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AlarmHistoryFromTo_Result>("AlarmHistoryFromTo", param1Parameter, param2Parameter);
+        }
     }
 }

@@ -80,7 +80,7 @@
 	</Style>
 
 	<!-- Regular button -->
-	<Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
+	<Style TargetType="{x:Type Button}" x:Key="RegularButton">
 
 		<Setter Property="Background" Value="{StaticResource WordOrangeBrush}" />
 		<Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
@@ -107,7 +107,6 @@
                                    Focusable="False" 
                                    FontFamily="{TemplateBinding FontFamily}"
                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                   Margin="{TemplateBinding Padding}" 
                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
 
@@ -123,14 +122,14 @@
 						<EventTrigger RoutedEvent="MouseEnter">
 							<BeginStoryboard>
 								<Storyboard>
-									<ColorAnimation To="{StaticResource WordBlue}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
+									<ColorAnimation To="{StaticResource WordDarkBlue}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
 								</Storyboard>
 							</BeginStoryboard>
 						</EventTrigger>
 						<EventTrigger RoutedEvent="MouseLeave">
 							<BeginStoryboard>
 								<Storyboard>
-									<ColorAnimation From="{StaticResource WordBlue}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
+									<ColorAnimation From="{StaticResource WordDarkBlue}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
 								</Storyboard>
 							</BeginStoryboard>
 						</EventTrigger>

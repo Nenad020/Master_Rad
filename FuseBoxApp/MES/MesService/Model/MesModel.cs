@@ -1,11 +1,8 @@
-﻿using Common.Communication.Access.MES;
-using Common.Communication.Client.UI;
-using Common.Model.UI;
+﻿using MesDbAccess.Access.Interfaces;
 using MesDbAccess.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace MesService.Model
 {

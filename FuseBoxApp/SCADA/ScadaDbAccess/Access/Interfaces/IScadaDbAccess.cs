@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Common.Communication.Access.SCADA
+namespace ScadaDbAccess.Access.Interfaces
 {
 	public interface IScadaDbAccess<T>
 	{

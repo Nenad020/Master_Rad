@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Access\CoilsAddressAccess.cs" />
     <Compile Include="Access\HoldingRegistersAddressAccess.cs" />
+    <Compile Include="Access\Interfaces\IScadaDbAccess.cs" />
     <Compile Include="Model\CoilsAddress.cs">
       <DependentUpon>ScadaDbModel.tt</DependentUpon>
     </Compile>

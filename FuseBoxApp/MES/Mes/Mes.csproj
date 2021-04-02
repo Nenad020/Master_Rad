@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceHosts\MesReportGeneratorServiceHost.cs" />
     <Compile Include="ServiceHosts\MesModelReaderServiceHost.cs" />
     <Compile Include="ServiceHosts\MesChangesServiceHost.cs" />
     <Compile Include="ServiceHosts\MesCommandServiceHost.cs" />

@@ -10,21 +10,35 @@
       mc:Ignorable="d"
       d:DesignHeight="1010" d:DesignWidth="1680"
       Title="StartUpPage">
-
+	
 	<Grid>
-		<ScrollViewer VerticalScrollBarVisibility="Auto">
-			<ItemsControl ItemsSource="{Binding Breakers}">
-				<ItemsControl.ItemsPanel>
-					<ItemsPanelTemplate>
-						<WrapPanel />
-					</ItemsPanelTemplate>
-				</ItemsControl.ItemsPanel>
-				<ItemsControl.ItemTemplate>
-					<DataTemplate>
-						<controls:BreakerControl Height="325" Margin="50 50 0 100"/>
-					</DataTemplate>
-				</ItemsControl.ItemTemplate>
-			</ItemsControl>
-		</ScrollViewer>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="50" />
+			<RowDefinition Height="20" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<Viewbox Grid.ColumnSpan="3" Margin="0">
+			<TextBlock FontFamily="{StaticResource LatoBold}" FontSize="{StaticResource FontSizeRegular}" Margin="0,0,0,-5" TextAlignment="Center">
+				<Run Text="B" Foreground="{StaticResource WordVeryLightBlueBrush}" /><Run Text="O" Foreground="{StaticResource WordVeryLightBlueBrush}" /><Run Text="A" Foreground="{StaticResource WordVeryLightBlueBrush}" /><Run Text="R" Foreground="{StaticResource WordVeryLightBlueBrush}" /><Run Text="D" Foreground="{StaticResource WordVeryLightBlueBrush}" /><Run Text=" " Foreground="{StaticResource WordVeryLightBlueBrush}" /><Run Text="P" Foreground="{StaticResource WordVeryLightBlueBrush}" /><Run Text="A" Foreground="{StaticResource WordVeryLightBlueBrush}" /><Run Text="G" Foreground="{StaticResource WordVeryLightBlueBrush}" /><Run Text="E" Foreground="{StaticResource WordVeryLightBlueBrush}" />
+			</TextBlock>
+		</Viewbox>
+
+		<Grid Grid.Row="2">
+			<ScrollViewer VerticalScrollBarVisibility="Auto">
+				<ItemsControl ItemsSource="{Binding Breakers}">
+					<ItemsControl.ItemsPanel>
+						<ItemsPanelTemplate>
+							<WrapPanel />
+						</ItemsPanelTemplate>
+					</ItemsControl.ItemsPanel>
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<controls:BreakerControl Height="325" Margin="50 50 0 100"/>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+			</ScrollViewer>
+		</Grid>
 	</Grid>
 </local:BasePage>

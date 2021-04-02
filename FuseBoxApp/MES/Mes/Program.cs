@@ -1,4 +1,4 @@
-﻿using Common.Communication.Access.MES;
+﻿using MesDbAccess.Access.Interfaces;
 using Mes.ServiceHosts;
 using MesDbAccess.Access;
 using MesDbAccess.Model;
@@ -9,11 +9,11 @@ namespace Mes
 {
 	class Program
 	{
-		private static IMesDbAccess<AlarmMe> alarmAccess;
+		private static AlarmAccess alarmAccess;
 
-		private static IMesDbAccess<BreakerMe> breakerAccess;
+		private static BreakerAccess breakerAccess;
 
-		private static IMesDbAccess<ElectricityMeterMe> electricityMeterAccess;
+		private static ElectricityMeterAccess electricityMeterAccess;
 
 		private static MesToScadaInitServiceHost mesToScadaInitServiceHost;
 
@@ -22,6 +22,8 @@ namespace Mes
 		private static MesModelReaderServiceHost mesModelReaderServiceHost;
 
 		private static MesCommandServiceHost mesCommandServiceHost;
+
+		private static MesReportGeneratorServiceHost mesReportGeneratorServiceHost;
 
 		private static MesModel mesModel;
 
@@ -48,6 +50,9 @@ namespace Mes
 			mesCommandServiceHost = new MesCommandServiceHost();
 			mesCommandServiceHost.Open();
 
+			mesReportGeneratorServiceHost = new MesReportGeneratorServiceHost(alarmAccess, mesModel);
+			mesReportGeneratorServiceHost.Open();
+
 			Console.ReadLine();
 			GracefulShutdown();
 		}
@@ -68,6 +73,7 @@ namespace Mes
 			mesChangesServiceHost?.Close();
 			mesModelReaderServiceHost?.Close();
 			mesCommandServiceHost?.Close();
+			mesReportGeneratorServiceHost?.Close();
 		}
 	}
 }

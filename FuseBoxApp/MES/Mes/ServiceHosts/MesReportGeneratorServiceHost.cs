@@ -3,26 +3,27 @@ using MesService;
 using MesService.Model;
 using System;
 using System.ServiceModel;
+using MesDbAccess.Access;
 
 namespace Mes.ServiceHosts
 {
-	public class MesModelReaderServiceHost
+	public class MesReportGeneratorServiceHost
 	{
         private readonly ServiceHost host;
 
-        public MesModelReaderServiceHost(MesModel mesModel)
+        public MesReportGeneratorServiceHost(AlarmAccess alarmAccess, MesModel mesModel)
         {
-            var mesReader = new MesModelReader(mesModel);
-            host = new ServiceHost(mesReader);
-            ServiceInstance = mesReader;
+            var mesReportGenerator = new MesReportGenerator(alarmAccess, mesModel);
+            host = new ServiceHost(mesReportGenerator);
+            ServiceInstance = mesReportGenerator;
         }
 
-        public IMESModelReader ServiceInstance { get; }
+        public IReports ServiceInstance { get; }
 
         public void Open()
         {
             host.Open();
-            Console.WriteLine("MES Model Reader Service Started...");
+            Console.WriteLine("MES Report Generator Service Started...");
             Console.WriteLine("Endpoints:");
 
             foreach (Uri uri in host.BaseAddresses)
@@ -36,7 +37,7 @@ namespace Mes.ServiceHosts
         public void Close()
         {
             host.Close();
-            Console.WriteLine("MES Model Reader Service Stopped...");
+            Console.WriteLine("MES Report Generator Service Stopped...");
         }
     }
 }

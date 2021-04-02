@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Common.Communication.Access.MES
+namespace MesDbAccess.Access.Interfaces
 {
 	public interface IMesDbAccess<T>
 	{
