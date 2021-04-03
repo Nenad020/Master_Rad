@@ -6,11 +6,11 @@
 		{
 			if (status)
 			{
-				return new double[] { 0, 0, 0, 35 }; //On
+				return new double[] { 100, 0, 0, 0 }; //On
 			}
 			else
 			{
-				return new double[] { 0, 35, 0, 0 }; // Off
+				return new double[] { 0, 0, 100, 0 }; // Off
 			}
 		}
 

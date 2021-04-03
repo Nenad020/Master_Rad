@@ -39,8 +39,10 @@
 				   Foreground="{StaticResource WordLightBlueBrush}"
 				   HorizontalAlignment="Center"/>
 
-		<Button Content="{Binding OkText}"
+		<Button Style="{StaticResource RegularButton}" 
+				Content="{Binding OkText}"
                 FontSize="{StaticResource FontSizeRegular}"
+				Width="100"
                 Command="{Binding CloseCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:BaseDialogUserControl}}}"
                 HorizontalAlignment="Center"
                 />

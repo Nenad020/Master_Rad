@@ -10,7 +10,7 @@ namespace FuseBoxUI.ViewModel.Report
 {
 	public class ReportViewModel : BaseViewModel
     {
-        private string selectedReport = "Current equipment";
+        private string selectedReport = "Alarm history";
 
         public List<string> Reports { get; set; }
 
@@ -49,8 +49,8 @@ namespace FuseBoxUI.ViewModel.Report
 
             Data = new DataTable();
 
-			FromDate = DateTime.Now;
-            ToDate = FromDate.AddDays(2);
+            FromDate = new DateTime(2021, 3, 1);
+            ToDate = new DateTime(2021, 4, 15);
 
             GenerateReportCommand = new RelayCommand(GenerateReport);
 
